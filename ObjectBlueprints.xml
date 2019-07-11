@@ -63,7 +63,7 @@
     </object>
   
     <object Name="Brinestalk" Load="Merge">
-      <part Name="Corpse" CorpseChance="35" CorpseBlueprint="Brinestalk Scrap" BodyDrop="false" InventoryDrop="true" />
+      <part Name="Corpse" CorpseChance="40" CorpseBlueprint="Brinestalk Scrap" BodyDrop="false" InventoryDrop="true" />
     </object>
   
     <object Name="BrinestalkStakes" Load="Merge">
@@ -73,6 +73,13 @@
       <part Name="acegiak_CanBuild" Needs="Scrap Metal:5"/>
     </object>
   
+
+    <object Name="Crafted Brinestalk Chest" Inherits="Chest">
+        <part Name="acegiak_CanBuild" Needs="Brinestalk Scrap:5;Scrap Metal:2"/>
+    </object>
+    <object Name="Crafted Wooden Chest" Inherits="Chest">
+        <part Name="acegiak_CanBuild" Needs="Scrap Wood:5;Scrap Metal:2"/>
+    </object>
     <!-- <object Name="Wooden Buckler" Load="Merge">
       <part Name="Corpse" CorpseChance="35" CorpseBlueprint="Wood Scrap" BodyDrop="false" InventoryDrop="true" />
     </object>
