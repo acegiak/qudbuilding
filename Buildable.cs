@@ -37,6 +37,7 @@ namespace XRL.World.Parts
 		{
 			Object.RegisterPartEvent(this, "GetInventoryActions");
 			Object.RegisterPartEvent(this, "InvCommandBuild");
+			Object.RegisterPartEvent(this, "GetShortDescription");
 			base.Register(Object);
 		}
 
@@ -83,7 +84,7 @@ namespace XRL.World.Parts
             {
                 return null;
             }
-            int num12 = Popup.ShowOptionList(string.Empty, ChoiceList.ToArray(), HotkeyList.ToArray(), 0, "Select a gift to give.", 60, bRespectOptionNewlines: false, bAllowEscape: true);
+            int num12 = Popup.ShowOptionList(string.Empty, ChoiceList.ToArray(), HotkeyList.ToArray(), 0, "Choose what to build.", 60, bRespectOptionNewlines: false, bAllowEscape: true);
             if (num12 < 0)
             {
                 return null;
@@ -107,6 +108,10 @@ namespace XRL.World.Parts
 					Build(E.GetParameter<GameObject>("Owner"));
                     E.RequestInterfaceExit();
 				}
+			if (E.ID == "GetShortDescription")
+			{
+				E.SetParameter("Postfix", E.GetStringParameter("Postfix") + "\n&CA simple construction material.");
+			}
 			
 			return base.FireEvent(E);
 		}
