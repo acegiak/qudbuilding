@@ -13,12 +13,12 @@
   
   <object Name="Rubble" Load="Merge">
       <part Name="acegiak_Buildable"></part>
-      <part Name="acegiak_CanBuild" Needs="Large Stone:10"/>
+      <tag Name="acegiak_Buildable" Value="Large Stone:10"/>
   </object>
   
     
     <object Name="MortarWall" Inherits="BaseWallRock">
-      <part Name="acegiak_CanBuild" Needs="Rubble:1"/>
+      <tag Name="acegiak_Buildable" Value="Rubble:1"/>
       <part Name="Render" DisplayName="stone wall" ColorString="&amp;w^y" Occluding="true" />
       <stat Name="AV" Value="10" />
       <stat Name="Hitpoints" Value="200" />
@@ -36,12 +36,12 @@
       </object>
   
       <object Name="Metal Door" Inherits="Door">
-        <part Name="acegiak_CanBuild" Needs="Scrap Metal:5"></part>
+        <tag Name="acegiak_Buildable" Value="Scrap Metal:5"/>
   
       </object>
   
       <object Name="Wood Door" Inherits="Door">
-        <part Name="acegiak_CanBuild" Needs="Scrap Wood:5"></part>
+        <tag Name="acegiak_Buildable" Value="Scrap Wood:5"/>
       </object>
     
     <object Name="Brinestalk Scrap" Inherits="Item">
@@ -67,31 +67,31 @@
     </object>
   
     <object Name="BrinestalkStakes" Load="Merge">
-      <part Name="acegiak_CanBuild" Needs="Brinestalk Scrap:5"/>
+      <tag Name="acegiak_Buildable" Value="Brinestalk Scrap:5"/>
     </object>
     <object Name="IronFence" Load="Merge">
-      <part Name="acegiak_CanBuild" Needs="Scrap Metal:5"/>
+      <tag Name="acegiak_Buildable" Value="Scrap Metal:5"/>
     </object>
   
 
     <object Name="Crafted Brinestalk Chest" Inherits="Chest">
-        <part Name="acegiak_CanBuild" Needs="Brinestalk Scrap:5;Scrap Metal:2"/>
+        <tag Name="acegiak_Buildable" Value="Brinestalk Scrap:5;Scrap Metal:2"/>
     </object>
     <object Name="Crafted Wooden Chest" Inherits="Chest">
-        <part Name="acegiak_CanBuild" Needs="Scrap Wood:5;Scrap Metal:2"/>
+        <tag Name="acegiak_Buildable" Value="Scrap Wood:5;Scrap Metal:2"/>
     </object>
-    <!-- <object Name="Wooden Buckler" Load="Merge">
-      <part Name="Corpse" CorpseChance="35" CorpseBlueprint="Wood Scrap" BodyDrop="false" InventoryDrop="true" />
+    <object Name="Wooden Buckler" Load="Merge">
+      <part Name="Corpse" CorpseChance="35" CorpseBlueprint="Scrap Wood" BodyDrop="false" InventoryDrop="true" />
     </object>
     <object Name="Club" Load="Merge">
-      <part Name="Corpse" CorpseChance="35" CorpseBlueprint="Wood Scrap" BodyDrop="false" InventoryDrop="true" />
+      <part Name="Corpse" CorpseChance="35" CorpseBlueprint="Scrap Wood" BodyDrop="false" InventoryDrop="true" />
     </object>
     <object Name="Walking Stick" Load="Merge">
-      <part Name="Corpse" CorpseChance="35" CorpseBlueprint="Wood Scrap" BodyDrop="false" InventoryDrop="true" />
+      <part Name="Corpse" CorpseChance="35" CorpseBlueprint="Scrap Wood" BodyDrop="false" InventoryDrop="true" />
     </object>
     <object Name="Dogthorn Tree" Load="Merge">
-      <part Name="Corpse" CorpseChance="35" CorpseBlueprint="Wood Scrap" BodyDrop="false" InventoryDrop="true" />
-    </object> -->
+      <part Name="Corpse" CorpseChance="35" CorpseBlueprint="Scrap Wood" BodyDrop="false" InventoryDrop="true" />
+    </object>
   
   
   </objects>

@@ -52,15 +52,14 @@ namespace XRL.World.Parts
                 Popup.Show("There's nothing that uses those parts.");
                 return;
 			}
-			GameObject go = bp.createOne();
-            go.GetPart<acegiak_CanBuild>().Build(cell, who);
+			Assemble(bp.GetTag("acegiak_Buildable"),bp.Name,cell, who);
         }
 
 		public List<GameObjectBlueprint> getBuilds(){
 			List<GameObjectBlueprint> ret = new List<GameObjectBlueprint>();
-			foreach (GameObjectBlueprint blueprint in GameObjectFactory.Factory.BlueprintList)
+			foreach (GameObjectBlueprint blueprint in GameObjectFactory.Factory.GetBlueprintsWithTag("acegiak_Buildable"))
 			{
-				if(acegiak_CanBuild.ExplodeNeeds(blueprint.GetPartParameter("acegiak_CanBuild","Needs")).ContainsKey(ParentObject.GetBlueprint().Name)){
+				if(ExplodeNeeds(blueprint.GetTag("acegiak_Buildable")).ContainsKey(ParentObject.GetBlueprint().Name)){
 					ret.Add(blueprint);
 				}
 			}
@@ -115,5 +114,58 @@ namespace XRL.World.Parts
 			
 			return base.FireEvent(E);
 		}
+
+		public static Dictionary<string,int> ExplodeNeeds(string needs){
+            Dictionary<string,int> ret = new Dictionary<string,int>();
+            if(needs == null){
+                return ret;
+            }
+            foreach(string row in needs.Split(';')){
+                string[] bits = row.Split(':');
+                ret.Add(bits[0],Convert.ToInt32(bits[1]));
+            }
+            return ret;
+        }
+
+		public bool Assemble(string needs, string blueprint, Cell cell, GameObject who){
+            foreach(KeyValuePair<string, int> entry in ExplodeNeeds(needs))
+            {
+                List<GameObject> bits = cell.GetObjects(entry.Key);
+                int bitcount = 0;
+                foreach(GameObject go in bits){
+                    bitcount+= go.Count;
+                }
+                if(bitcount < entry.Value){
+                    GameObject sample = GameObjectFactory.Factory.CreateObject(entry.Key,-9999);
+
+                    Popup.Show("You need "+sample.DisplayNameOnly+" x "+entry.Value.ToString()+" to build: "+ParentObject.DisplayNameOnly+".");
+                    return false;
+                }
+            }
+
+            foreach(KeyValuePair<string, int> entry in ExplodeNeeds(needs))
+            {
+                List<GameObject> bits = cell.GetObjects(entry.Key);
+                int bitcount = 0;
+                foreach(GameObject go in bits){
+                    if(go.GetPart<Stacker>() == null){
+                        cell.RemoveObject(go);
+                        bitcount++;
+                    }else{
+                        if(bitcount+go.Count <= entry.Value){
+                            bitcount+= go.Count;
+                            cell.RemoveObject(go);
+                        }else{
+                            go.GetPart<Stacker>().StackCount -= (entry.Value - bitcount);
+                            bitcount += entry.Value - bitcount;
+                        }
+                    }
+                }
+            }
+            who.UseEnergy(10000,"Building");
+			
+            cell.AddObject(GameObject.create(blueprint));
+            return true;
+        }
 	}
 }
