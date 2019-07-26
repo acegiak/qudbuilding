@@ -43,6 +43,10 @@
       <object Name="Wood Door" Inherits="Door">
         <tag Name="acegiak_Buildable" Value="Scrap Wood:5"/>
       </object>
+
+      <object Name="WoodWall" Load="Merge">
+        <tag Name="acegiak_Buildable" Value="Brinestalk Scrap:12"/>
+      </object>
     
     <object Name="Brinestalk Scrap" Inherits="Item">
       <part Name="Render" DisplayName="brinestalk cane" Tile="Items/brinestalkscrap.png" RenderString="." ColorString="&amp;w" DetailColor="g" Occluding="false"></part>
