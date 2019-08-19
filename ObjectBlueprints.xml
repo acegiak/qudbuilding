@@ -49,7 +49,7 @@
         <tag Name="acegiak_Buildable" Value="Brinestalk Scrap:12"/>
       </object>
     
-    <object Name="Brinestalk Scrap" Inherits="Item">
+    <object Name="Brinestalk Scrap" Inherits="Scrap">
       <part Name="Render" DisplayName="brinestalk cane" Tile="Items/brinestalkscrap.png" RenderString="." ColorString="&amp;w" DetailColor="g" Occluding="false"></part>
       <part Name="Physics" Weight="1" Takeable="true" Solid="false"></part>
       <part Name="Description" Short="A strong, bendable brinestalk cane."></part>
@@ -58,11 +58,14 @@
     </object>
   
     
-    <object Name="Scrap Wood" Inherits="Item">
+    <object Name="Scrap Wood" Inherits="Scrap">
       <part Name="Render" DisplayName="wood scrap" Tile="Items/woodscrap.png" RenderString="." ColorString="&amp;w" DetailColor="r" Occluding="false"></part>
       <part Name="Physics" Weight="1" Takeable="true" Solid="false"></part>
       <part Name="Description" Short="A sturdy scrap of wood."></part>
       <part Name="acegiak_Buildable"></part>
+      <part Name="TinkerItem" Bits="0" CanRepair="false" CanDisassemble="false" CanBuild="false" />
+      <intproperty Name="Scrap" Value="1" />
+
       <!-- <part Name="TinkerItem" Bits="w"></part> -->
       <part Name="Stacker" />
     </object>
