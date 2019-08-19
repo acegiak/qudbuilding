@@ -28,16 +28,17 @@
     <object Name="Large Stone" Load="Merge">
         <part Name="acegiak_Buildable"></part>
         <part Name="Stacker" />
-    
       </object>
+      <object Name="Torch" Load="Merge">
+          <part Name="acegiak_Buildable"></part>
+      </object>
+
       <object Name="Scrap Metal" Load="Merge">
         <part Name="acegiak_Buildable"></part>
-    
       </object>
   
       <object Name="Metal Door" Inherits="Door">
         <tag Name="acegiak_Buildable" Value="Scrap Metal:5"/>
-  
       </object>
   
       <object Name="Wood Door" Inherits="Door">
@@ -76,6 +77,9 @@
     <object Name="IronFence" Load="Merge">
       <tag Name="acegiak_Buildable" Value="Scrap Metal:5"/>
     </object>
+    <object Name="Torchpost" Load="Merge">
+      <tag Name="acegiak_Buildable" Value="Torch:1;Scrap Metal:2;Scrap Wood:2"/>
+    </object>
   
 
     <object Name="Crafted Brinestalk Chest" Inherits="Chest">
@@ -97,5 +101,13 @@
       <part Name="Corpse" CorpseChance="35" CorpseBlueprint="Scrap Wood" BodyDrop="false" InventoryDrop="true" />
     </object>
   
+    
+  <object Name="PlayerSign" Inherits="Sign">
+    <part Name="Render" DisplayName="sign" Tile="Items/sw_sign_body.bmp" RenderString="=" ColorString="&amp;y" DetailColor="r" Occluding="false" />
+    <part Name="Chat" Says="Salt Sundries" ShowInShortDescription="true" />
+    <tag Name="acegiak_Buildable" Value="Scrap Wood:5"/>
+    <part Name="acegiak_SignNamer"></part>
+    <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
+  </object>
   
   </objects>

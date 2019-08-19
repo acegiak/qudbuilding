@@ -4,9 +4,6 @@
 			"path": "."
 		},
 		{
-			"path": "/home/acegiak/git/assembly"
-		},
-		{
 			"path": "/home/acegiak/.steam/steam/steamapps/common/Caves of Qud/CoQ_Data/StreamingAssets/Base"
 		},
 		{
@@ -14,6 +11,9 @@
 		},
 		{
 			"path": "/home/acegiak/.config/unity3d/Editor"
+		},
+		{
+			"path": "/home/acegiak/git/qudassembly"
 		}
 	],
 	"settings": {}
