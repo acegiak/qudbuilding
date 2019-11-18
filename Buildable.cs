@@ -138,7 +138,7 @@ namespace XRL.World.Parts
                 if(bitcount < entry.Value){
                     GameObject sample = GameObjectFactory.Factory.CreateObject(entry.Key,-9999);
 
-                    Popup.Show("You need "+sample.DisplayNameOnly+" x "+entry.Value.ToString()+" to build: "+ParentObject.DisplayNameOnly+".");
+                    Popup.Show("You need "+sample.DisplayNameOnly+" x "+entry.Value.ToString()+" to build: "+GameObject.create(blueprint).DisplayNameOnly+".");
                     return false;
                 }
             }

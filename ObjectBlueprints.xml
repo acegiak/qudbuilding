@@ -36,12 +36,18 @@
       <object Name="Scrap Metal" Load="Merge">
         <part Name="acegiak_Buildable"></part>
       </object>
+      <object Name="Scrap 1" Load="Merge">
+        <part Name="acegiak_Buildable"></part>
+      </object>
+      <object Name="Scrap 3" Load="Merge">
+        <part Name="acegiak_Buildable"></part>
+      </object>
   
       <object Name="Metal Door" Inherits="Door">
         <tag Name="acegiak_Buildable" Value="Scrap Metal:4"/>
   
       </object>
-  
+
       <object Name="Wood Door" Inherits="Door">
         <tag Name="acegiak_Buildable" Value="Scrap Wood:4"/>
       </object>
@@ -77,9 +83,12 @@
   
     <object Name="BrinestalkStakes" Load="Merge">
       <tag Name="acegiak_Buildable" Value="Brinestalk Scrap:4"/>
+      <part Name="Corpse" CorpseChance="40" CorpseBlueprint="Brinestalk Scrap" BodyDrop="false" InventoryDrop="true" />
     </object>
     <object Name="IronFence" Load="Merge">
       <tag Name="acegiak_Buildable" Value="Scrap Metal:4"/>
+      <part Name="Corpse" CorpseChance="40" CorpseBlueprint="Scrap Metal" BodyDrop="false" InventoryDrop="true" />
+
     </object>
     <object Name="Torchpost" Load="Merge">
       <tag Name="acegiak_Buildable" Value="Torch:1;Scrap Metal:2;Scrap Wood:2"/>
@@ -113,6 +122,36 @@
     <part Name="acegiak_SignNamer"></part>
     <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
   </object>
+
+  <object Name="PlayerConveyorPadN" Inherits="ConveyorPad">
+    <part Name="Render" DisplayName="conveyor belt north"/>
+    <part Name="ConveyorPad" Direction="N" Connections="N"></part>
+    <tag Name="acegiak_Buildable" Value="Scrap Metal:5"/>
+    <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
+  </object>
+  <object Name="PlayerConveyorPadS" Inherits="ConveyorPad">
+    <part Name="Render" DisplayName="conveyor belt south"/>
+    <part Name="ConveyorPad" Direction="S" Connections="S"></part>
+    <tag Name="acegiak_Buildable" Value="Scrap Metal:5"/>
+    <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
+  </object>
+  <object Name="PlayerConveyorPadE" Inherits="ConveyorPad">
+    <part Name="Render" DisplayName="conveyor belt east"/>
+    <part Name="ConveyorPad" Direction="E" Connections="E"></part>
+    <tag Name="acegiak_Buildable" Value="Scrap Metal:5"/>
+    <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
+  </object>
+  <object Name="PlayerConveyorPadW" Inherits="ConveyorPad">
+    <part Name="Render" DisplayName="conveyor belt west"/>
+    <part Name="ConveyorPad" Direction="W" Connections="W"></part>
+    <tag Name="acegiak_Buildable" Value="Scrap Metal:5"/>
+    <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
+  </object>
+  
+  <object Name="ConveyorDrive" Load="Merge">
+      <tag Name="acegiak_Buildable" Value="Scrap 1:2;Scrap 3:1"/>
+  </object>
+
 
   <object Name="Bed" Load="Merge">
       <tag Name="acegiak_Buildable" Value="Bedroll:1;Scrap Wood:4"/>
