@@ -130,7 +130,7 @@ namespace XRL.World.Parts
 		public bool Assemble(string needs, string blueprint, Cell cell, GameObject who){
             foreach(KeyValuePair<string, int> entry in ExplodeNeeds(needs))
             {
-                List<GameObject> bits = cell.GetObjects(entry.Key);
+                List<GameObject> bits = cell.GetObjects().Where(d=>d.Blueprint == entry.Key || d.GetBlueprint().InheritsFrom(entry.Key)).ToList();
                 int bitcount = 0;
                 foreach(GameObject go in bits){
                     bitcount+= go.Count;
@@ -145,7 +145,7 @@ namespace XRL.World.Parts
 
             foreach(KeyValuePair<string, int> entry in ExplodeNeeds(needs))
             {
-                List<GameObject> bits = cell.GetObjects(entry.Key);
+                List<GameObject> bits = cell.GetObjects().Where(d=>d.Blueprint == entry.Key || d.GetBlueprint().InheritsFrom(entry.Key)).ToList();
                 int bitcount = 0;
                 foreach(GameObject go in bits){
                     if(go.GetPart<Stacker>() == null){

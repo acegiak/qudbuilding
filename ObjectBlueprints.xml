@@ -32,6 +32,9 @@
       <object Name="Torch" Load="Merge">
           <part Name="acegiak_Buildable"></part>
       </object>
+      <object Name="Copper Nugget" Load="Merge">
+          <part Name="acegiak_Buildable"></part>
+      </object>
 
       <object Name="Scrap Metal" Load="Merge">
         <part Name="acegiak_Buildable"></part>
@@ -61,6 +64,8 @@
       <part Name="Physics" Weight="1" Takeable="true" Solid="false"></part>
       <part Name="Description" Short="A strong, bendable brinestalk cane."></part>
       <part Name="acegiak_Buildable"></part>
+      <part Name="TinkerItem" Bits="0" CanRepair="false" CanDisassemble="false" CanBuild="false" />
+
       <part Name="Stacker" />
     </object>
   
@@ -71,8 +76,6 @@
       <part Name="Description" Short="A sturdy scrap of wood."></part>
       <part Name="acegiak_Buildable"></part>
       <part Name="TinkerItem" Bits="0" CanRepair="false" CanDisassemble="false" CanBuild="false" />
-      <intproperty Name="Scrap" Value="1" />
-
       <!-- <part Name="TinkerItem" Bits="w"></part> -->
       <part Name="Stacker" />
     </object>
