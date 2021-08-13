@@ -1,7 +1,7 @@
 using System;
 using XRL.Rules;
 using XRL.UI;
-using XRL.World.Parts.Effects;
+using XRL.World.Effects;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -83,7 +83,7 @@ namespace XRL.World.Parts
             {
                 return null;
             }
-            int num12 = Popup.ShowOptionList(string.Empty, ChoiceList.ToArray(), HotkeyList.ToArray(), 0, "Choose what to build.", 60, bRespectOptionNewlines: false, bAllowEscape: true);
+            int num12 = Popup.ShowOptionList(string.Empty, ChoiceList.ToArray(), HotkeyList.ToArray(), 0, "Choose what to build.", 60, RespectOptionNewlines: false, AllowEscape: true);
             if (num12 < 0)
             {
                 return null;
