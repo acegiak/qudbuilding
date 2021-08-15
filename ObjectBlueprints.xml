@@ -12,58 +12,59 @@
   </object>
   
   <object Name="Rubble" Load="Merge">
-      <part Name="acegiak_Buildable"></part>
-      <tag Name="acegiak_Buildable" Value="Large Stone:3"/>
+      <part Name="acegiak_Buildable" />
+      <tag Name="acegiak_Buildable" Value="Large Stone:3" />
   </object>
   
     
     <object Name="MortarWall" Inherits="BaseWallRock">
-      <tag Name="acegiak_Buildable" Value="Rubble:1"/>
-      <part Name="Render" DisplayName="stone wall" ColorString="&amp;w^y" Occluding="true" />
+      <tag Name="acegiak_Buildable" Value="Rubble:1" />
+      <part Name="Render" DisplayName="cobblestone wall" ColorString="&amp;w^y" Occluding="true" />
       <stat Name="AV" Value="10" />
       <stat Name="Hitpoints" Value="200" />
       <part Name="Description" Short="Mismatched stones bound into single service by callous mortar." />
     </object>
   
     <object Name="Large Stone" Load="Merge">
-        <part Name="acegiak_Buildable"></part>
+        <part Name="acegiak_Buildable" />
         <part Name="Stacker" />
       </object>
       <object Name="Torch" Load="Merge">
-          <part Name="acegiak_Buildable"></part>
+          <part Name="acegiak_Buildable" />
       </object>
       <object Name="Copper Nugget" Load="Merge">
-          <part Name="acegiak_Buildable"></part>
+          <part Name="acegiak_Buildable" />
       </object>
 
       <object Name="Scrap Metal" Load="Merge">
-        <part Name="acegiak_Buildable"></part>
+        <part Name="acegiak_Buildable" />
       </object>
       <object Name="Scrap 1" Load="Merge">
-        <part Name="acegiak_Buildable"></part>
+        <part Name="acegiak_Buildable" />
       </object>
       <object Name="Scrap 3" Load="Merge">
-        <part Name="acegiak_Buildable"></part>
+        <part Name="acegiak_Buildable" />
       </object>
   
       <object Name="Metal Door" Inherits="Door">
-        <tag Name="acegiak_Buildable" Value="Scrap Metal:4"/>
-  
+        <tag Name="acegiak_Buildable" Value="Scrap Metal:4" />
+        <part Name="Render" DisplayName="metal door" />
       </object>
 
       <object Name="Wood Door" Inherits="Door">
-        <tag Name="acegiak_Buildable" Value="Scrap Wood:4"/>
+        <part Name="Render" DisplayName="wooden door" />
+        <tag Name="acegiak_Buildable" Value="Scrap Wood:4" />
       </object>
 
       <object Name="WoodWall" Load="Merge">
-        <tag Name="acegiak_Buildable" Value="Brinestalk Scrap:6"/>
+        <tag Name="acegiak_Buildable" Value="Brinestalk Scrap:6" />
       </object>
     
     <object Name="Brinestalk Scrap" Inherits="Scrap">
-      <part Name="Render" DisplayName="brinestalk cane" Tile="Items/brinestalkscrap.png" RenderString="." ColorString="&amp;w" DetailColor="g" Occluding="false"></part>
-      <part Name="Physics" Weight="1" Takeable="true" Solid="false"></part>
-      <part Name="Description" Short="A strong, bendable brinestalk cane."></part>
-      <part Name="acegiak_Buildable"></part>
+      <part Name="Render" DisplayName="brinestalk cane" Tile="Items/brinestalkscrap.png" RenderString="." ColorString="&amp;w" DetailColor="g" Occluding="false" />
+      <part Name="Physics" Weight="1" Takeable="true" Solid="false" />
+      <part Name="Description" Short="A strong, bendable brinestalk cane." />
+      <part Name="acegiak_Buildable" />
       <part Name="TinkerItem" Bits="0" CanRepair="false" CanDisassemble="false" CanBuild="false" />
 
       <part Name="Stacker" />
@@ -71,12 +72,12 @@
   
     
     <object Name="Scrap Wood" Inherits="Scrap">
-      <part Name="Render" DisplayName="wood scrap" Tile="Items/woodscrap.png" RenderString="." ColorString="&amp;w" DetailColor="r" Occluding="false"></part>
-      <part Name="Physics" Weight="1" Takeable="true" Solid="false"></part>
-      <part Name="Description" Short="A sturdy scrap of wood."></part>
-      <part Name="acegiak_Buildable"></part>
+      <part Name="Render" DisplayName="wood scrap" Tile="Items/woodscrap.png" RenderString="." ColorString="&amp;w" DetailColor="r" Occluding="false" />
+      <part Name="Physics" Weight="1" Takeable="true" Solid="false" />
+      <part Name="Description" Short="A sturdy scrap of wood." />
+      <part Name="acegiak_Buildable" />
       <part Name="TinkerItem" Bits="0" CanRepair="false" CanDisassemble="false" CanBuild="false" />
-      <!-- <part Name="TinkerItem" Bits="w"></part> -->
+      <!-- <part Name="TinkerItem" Bits="w" /> -->
       <part Name="Stacker" />
     </object>
   
@@ -85,24 +86,25 @@
     </object>
   
     <object Name="BrinestalkStakes" Load="Merge">
-      <tag Name="acegiak_Buildable" Value="Brinestalk Scrap:4"/>
+      <tag Name="acegiak_Buildable" Value="Brinestalk Scrap:4" />
       <part Name="Corpse" CorpseChance="40" CorpseBlueprint="Brinestalk Scrap" BodyDrop="false" InventoryDrop="true" />
     </object>
     <object Name="IronFence" Load="Merge">
-      <tag Name="acegiak_Buildable" Value="Scrap Metal:4"/>
+      <tag Name="acegiak_Buildable" Value="Scrap Metal:4" />
       <part Name="Corpse" CorpseChance="40" CorpseBlueprint="Scrap Metal" BodyDrop="false" InventoryDrop="true" />
 
     </object>
     <object Name="Torchpost" Load="Merge">
-      <tag Name="acegiak_Buildable" Value="Torch:1;Scrap Metal:2;Scrap Wood:2"/>
+      <tag Name="acegiak_Buildable" Value="Torch:1;Scrap Metal:2;Scrap Wood:2" />
     </object>
-  
 
     <object Name="Crafted Brinestalk Chest" Inherits="Chest">
-        <tag Name="acegiak_Buildable" Value="Brinestalk Scrap:5;Scrap Metal:2"/>
+        <part Name="Render" DisplayName="brinestalk chest" />
+        <tag Name="acegiak_Buildable" Value="Brinestalk Scrap:5;Scrap Metal:2" />
     </object>
     <object Name="Crafted Wooden Chest" Inherits="Chest">
-        <tag Name="acegiak_Buildable" Value="Scrap Wood:5;Scrap Metal:2"/>
+        <part Name="Render" DisplayName="wooden chest" />
+        <tag Name="acegiak_Buildable" Value="Scrap Wood:5;Scrap Metal:2" />
     </object>
     <object Name="Wooden Buckler" Load="Merge">
       <part Name="Corpse" CorpseChance="35" CorpseBlueprint="Scrap Wood" BodyDrop="false" InventoryDrop="true" />
@@ -116,51 +118,49 @@
     <object Name="Dogthorn Tree" Load="Merge">
       <part Name="Corpse" CorpseChance="35" CorpseBlueprint="Scrap Wood" BodyDrop="false" InventoryDrop="true" />
     </object>
-  
     
   <object Name="PlayerSign" Inherits="Sign">
     <part Name="Render" DisplayName="sign" Tile="Items/sw_sign_body.bmp" RenderString="=" ColorString="&amp;y" DetailColor="r" Occluding="false" />
     <part Name="Chat" Says="Salt Sundries" ShowInShortDescription="true" />
-    <tag Name="acegiak_Buildable" Value="Scrap Wood:5"/>
-    <part Name="acegiak_SignNamer"></part>
+    <tag Name="acegiak_Buildable" Value="Scrap Wood:5" />
+    <part Name="acegiak_SignNamer" />
     <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
   </object>
 
   <object Name="PlayerConveyorPadN" Inherits="ConveyorPad">
-    <part Name="Render" DisplayName="conveyor belt north"/>
-    <part Name="ConveyorPad" Direction="N" Connections="N"></part>
-    <tag Name="acegiak_Buildable" Value="Scrap Metal:5"/>
+    <part Name="Render" DisplayName="conveyor belt north" />
+    <part Name="ConveyorPad" Direction="N" Connections="N" />
+    <tag Name="acegiak_Buildable" Value="Scrap Metal:5" />
     <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
   </object>
   <object Name="PlayerConveyorPadS" Inherits="ConveyorPad">
-    <part Name="Render" DisplayName="conveyor belt south"/>
-    <part Name="ConveyorPad" Direction="S" Connections="S"></part>
-    <tag Name="acegiak_Buildable" Value="Scrap Metal:5"/>
+    <part Name="Render" DisplayName="conveyor belt south" />
+    <part Name="ConveyorPad" Direction="S" Connections="S" />
+    <tag Name="acegiak_Buildable" Value="Scrap Metal:5" />
     <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
   </object>
   <object Name="PlayerConveyorPadE" Inherits="ConveyorPad">
-    <part Name="Render" DisplayName="conveyor belt east"/>
-    <part Name="ConveyorPad" Direction="E" Connections="E"></part>
-    <tag Name="acegiak_Buildable" Value="Scrap Metal:5"/>
+    <part Name="Render" DisplayName="conveyor belt east" />
+    <part Name="ConveyorPad" Direction="E" Connections="E" />
+    <tag Name="acegiak_Buildable" Value="Scrap Metal:5" />
     <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
   </object>
   <object Name="PlayerConveyorPadW" Inherits="ConveyorPad">
-    <part Name="Render" DisplayName="conveyor belt west"/>
-    <part Name="ConveyorPad" Direction="W" Connections="W"></part>
-    <tag Name="acegiak_Buildable" Value="Scrap Metal:5"/>
+    <part Name="Render" DisplayName="conveyor belt west" />
+    <part Name="ConveyorPad" Direction="W" Connections="W" />
+    <tag Name="acegiak_Buildable" Value="Scrap Metal:5" />
     <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
   </object>
   
   <object Name="ConveyorDrive" Load="Merge">
-      <tag Name="acegiak_Buildable" Value="Scrap 1:2;Scrap 3:1"/>
+      <tag Name="acegiak_Buildable" Value="Scrap 1:2;Scrap 3:1" />
   </object>
-
 
   <object Name="Bed" Load="Merge">
-      <tag Name="acegiak_Buildable" Value="Bedroll:1;Scrap Wood:4"/>
+      <tag Name="acegiak_Buildable" Value="Bedroll:1;Scrap Wood:4" />
   </object>
   <object Name="Bedroll" Load="Merge">
-      <part Name="acegiak_Buildable"></part>
+      <part Name="acegiak_Buildable" />
   </object>
   
   </objects>

@@ -8,11 +8,6 @@ namespace XRL.World.Parts.Skill
 	[Serializable]
 	internal class acegiak_Tinker0 : BaseSkill
 	{
-		public acegiak_Tinker0()
-		{
-			DisplayName = "acegiak_Tinker0";
-		}
-
 		public override bool AllowStaticRegistration()
 		{
 			return true;
@@ -32,7 +27,7 @@ namespace XRL.World.Parts.Skill
                     GameObject GO = E.GetGameObjectParameter("Object");
 					if (GO.Understood() && GO.GetPart<acegiak_Buildable>() != null && GO.pPhysics.CurrentCell != null)
 					{
-						E.GetParameter<EventParameterGetInventoryActions>("Actions").AddAction("Build", 'B', false, "&WB&yuild", "InvCommandBuild", 5);
+						E.GetParameter<EventParameterGetInventoryActions>("Actions").AddAction("Build", 'B', false, "&WB&yuild", "InvCommandBuild", null, 5);
 					}
 				}
 			return base.FireEvent(E);
