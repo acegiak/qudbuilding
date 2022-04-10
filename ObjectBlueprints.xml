@@ -1,155 +1,146 @@
 <objects>
   <object Name="BaseWallRock" Load="Merge">
-    <part Name="Corpse" CorpseChance="25" CorpseBlueprint="Large Stone" BodyDrop="false" InventoryDrop="true" />
+    <part Name="ItemDrop" PartsToDrop="Rubble,5;Large Stone;Large Stone,75;Large Stone,50"/>
   </object>
   
   <object Name="BaseWallStone" Load="Merge">
-    <part Name="Corpse" CorpseChance="25" CorpseBlueprint="Large Stone" BodyDrop="false" InventoryDrop="true" />
-  </object>
-  
-  <object Name="Rubble" Load="Merge">
-    <tag Name="acegiak_Buildable" Value="Large Stone:3" />
+    <part Name="ItemDrop" PartsToDrop="Rubble,5;Large Stone;Large Stone,75;Large Stone,50"/>
   </object>
   
   <object Name="MortarWall" Inherits="BaseWallRock">
-    <tag Name="acegiak_Buildable" Value="Large Stone:3" />
     <part Name="Render" DisplayName="cobblestone wall" ColorString="&amp;w^y" Occluding="true" />
     <stat Name="AV" Value="10" />
     <stat Name="Hitpoints" Value="200" />
     <part Name="Description" Short="Mismatched stones bound into single service by callous mortar." />
+    <part Name="ItemDrop" PartsToDrop="Rubble"/>
   </object>
 
-  <object Name="Large Stone" Load="Merge">
-    <part Name="acegiak_Buildable" />
-  </object>
-  <object Name="Torch" Load="Merge">
-    <part Name="acegiak_Buildable" />
-  </object>
-  <object Name="Copper Nugget" Load="Merge">
-    <part Name="acegiak_Buildable" />
-  </object>
-
-  <object Name="Scrap Metal" Load="Merge">
-    <part Name="acegiak_Buildable" />
-  </object>
-  <object Name="Scrap 1" Load="Merge">
-    <part Name="acegiak_Buildable" />
-  </object>
-  <object Name="Scrap 3" Load="Merge">
-    <part Name="acegiak_Buildable" />
+  <object Name="Rubble" Load="Merge">
+    <part Name="ItemDrop" PartsToDrop="Large Stone;Large Stone,75;Large Stone,50"/>
   </object>
 
   <object Name="Metal Door" Inherits="Door">
-    <tag Name="acegiak_Buildable" Value="Scrap Metal:4" />
     <part Name="Render" DisplayName="metal door" />
+    <part Name="ItemDrop" PartsToDrop="Scrap Metal,100,2;Scrap Metal,75,1;Scrap Wood,50,1"/>
   </object>
 
   <object Name="Wood Door" Inherits="Door">
     <part Name="Render" DisplayName="wooden door" />
-    <tag Name="acegiak_Buildable" Value="Scrap Wood:4" />
+    <part Name="ItemDrop" PartsToDrop="Scrap Wood,100,2;Scrap Wood,75,1;Scrap Wood,50,1"/>
   </object>
 
-  <object Name="CraftableWoodWall" Inherits="WoodWall">
-    <tag Name="acegiak_Buildable" Value="Brinestalk Scrap:6" />
-  </object>
-
-  <object Name="Brinestalk Scrap" Inherits="Scrap">
+  <object Name="Brinestalk Scrap" Inherits="Item">
     <part Name="Render" DisplayName="brinestalk cane" Tile="Items/brinestalkscrap.png" RenderString="." ColorString="&amp;w" DetailColor="g" Occluding="false" />
     <part Name="Physics" Weight="1" Takeable="true" Solid="false" />
     <part Name="Description" Short="A strong, bendable brinestalk cane." />
-    <part Name="acegiak_Buildable" />
-    <part Name="TinkerItem" Bits="0" CanRepair="false" CanDisassemble="false" CanBuild="false" />
+    <part Name="ItemDrop" PartsToDrop="Brinestalk Fiber,100;Brinestalk Fiber,50"/>
   </object>
-  
-  <object Name="Scrap Wood" Inherits="Scrap">
+
+  <object Name="Brinestalk Fiber" Inherits="Item">
+    <part Name="Render" DisplayName="brinestalk fibres" Tile="Items/brinestalkfibre.png" RenderString="." ColorString="&amp;w" DetailColor="g" Occluding="false" />
+    <part Name="Physics" Weight="1" Takeable="true" Solid="false" />
+    <part Name="Description" Short="Sturdy brinestalk canes, beaten into a mat of fibres." />
+  </object>
+
+  <object Name="Scrap Wood" Inherits="Item">
     <part Name="Render" DisplayName="wood scrap" Tile="Items/woodscrap.png" RenderString="." ColorString="&amp;w" DetailColor="r" Occluding="false" />
     <part Name="Physics" Weight="1" Takeable="true" Solid="false" />
     <part Name="Description" Short="A sturdy scrap of wood." />
-    <part Name="acegiak_Buildable" />
-    <part Name="TinkerItem" Bits="0" CanRepair="false" CanDisassemble="false" CanBuild="false" />
   </object>
 
   <object Name="Brinestalk" Load="Merge">
-    <part Name="Corpse" CorpseChance="40" CorpseBlueprint="Brinestalk Scrap" BodyDrop="false" InventoryDrop="true" />
+    <part Name="ItemDrop" PartsToDrop="Brinestalk Scrap;Brinestalk Scrap,50"/>
   </object>
 
   <object Name="BrinestalkStakes" Load="Merge">
-    <tag Name="acegiak_Buildable" Value="Brinestalk Scrap:4" />
-    <part Name="Corpse" CorpseChance="40" CorpseBlueprint="Brinestalk Scrap" BodyDrop="false" InventoryDrop="true" />
+    <part Name="ItemDrop" PartsToDrop="Brinestalk Scrap,100,2;Brinestalk Scrap,75;Brinestalk Scrap,50"/>
   </object>
   <object Name="IronFence" Load="Merge">
-    <tag Name="acegiak_Buildable" Value="Scrap Metal:4" />
-    <part Name="Corpse" CorpseChance="40" CorpseBlueprint="Scrap Metal" BodyDrop="false" InventoryDrop="true" />
-  </object>
-
-  <object Name="CraftableTorchpost" Inherits="Torchpost">
-    <tag Name="acegiak_Buildable" Value="Torch:1;Scrap Metal:2;Scrap Wood:2" />
+    <part Name="ItemDrop" PartsToDrop="Scrap Metal,100,2;Scrap Metal,75;Scrap Metal,50"/>
   </object>
 
   <object Name="Crafted Brinestalk Chest" Inherits="Chest">
     <part Name="Render" DisplayName="brinestalk chest" />
-    <tag Name="acegiak_Buildable" Value="Brinestalk Scrap:5;Scrap Metal:2" />
+    <part Name="ItemDrop" PartsToDrop="Brinestalk Scrap,100,2;Brinestalk Scrap,75;Brinestalk Scrap,50"/>
   </object>
   <object Name="Crafted Wooden Chest" Inherits="Chest">
     <part Name="Render" DisplayName="wooden chest" />
-    <tag Name="acegiak_Buildable" Value="Scrap Wood:5;Scrap Metal:2" />
     <part Name="Description" Short="A simple chest made from scrap wood." />
   </object>
   <object Name="Wooden Buckler" Load="Merge">
-    <part Name="Corpse" CorpseChance="35" CorpseBlueprint="Scrap Wood" BodyDrop="false" InventoryDrop="true" />
+    <part Name="ItemDrop" PartsToDrop="Scrap Wood,35"/>
   </object>
   <object Name="Club" Load="Merge">
-    <part Name="Corpse" CorpseChance="35" CorpseBlueprint="Scrap Wood" BodyDrop="false" InventoryDrop="true" />
+    <part Name="ItemDrop" PartsToDrop="Scrap Wood,35"/>
   </object>
   <object Name="Walking Stick" Load="Merge">
-    <part Name="Corpse" CorpseChance="35" CorpseBlueprint="Scrap Wood" BodyDrop="false" InventoryDrop="true" />
+    <part Name="ItemDrop" PartsToDrop="Scrap Wood,35"/>
   </object>
   <object Name="Dogthorn Tree" Load="Merge">
-    <part Name="Corpse" CorpseChance="35" CorpseBlueprint="Scrap Wood" BodyDrop="false" InventoryDrop="true" />
+    <part Name="ItemDrop" PartsToDrop="Scrap Wood,100,2;Scrap Wood,75;Scrap Wood,50"/>
   </object>
     
   <object Name="PlayerSign" Inherits="Sign">
     <part Name="Render" DisplayName="sign" Tile="Items/sw_sign_body.bmp" RenderString="=" ColorString="&amp;y" DetailColor="r" Occluding="false" />
-    <part Name="Chat" Says="Salt Sundries" ShowInShortDescription="true" />
-    <tag Name="acegiak_Buildable" Value="Scrap Wood:5" />
+    <part Name="Chat" Says="Your Text Here" ShowInShortDescription="true" />
     <part Name="acegiak_SignNamer" />
     <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
+    <part Name="ItemDrop" PartsToDrop="Scrap Wood,100,3;Scrap Wood,75;Scrap Wood,50"/>
   </object>
 
-  <object Name="PlayerConveyorPadN" Inherits="ConveyorPad">
-    <part Name="Render" DisplayName="conveyor belt north" />
-    <part Name="ConveyorPad" Direction="N" Connections="N" />
-    <tag Name="acegiak_Buildable" Value="Scrap Metal:5" />
-    <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
+  <object Name="Crafted Wood Desk" Inherits="Wood Desk">
+    <part Name="Render" DisplayName="brinestalk desk" ColorString="&amp;c" />
+    <part Name="Description" Short="A simple wooden desk made of dried brinestalk." />
+    <part Name="Inventory"/>
   </object>
-  <object Name="PlayerConveyorPadS" Inherits="ConveyorPad">
-    <part Name="Render" DisplayName="conveyor belt south" />
-    <part Name="ConveyorPad" Direction="S" Connections="S" />
-    <tag Name="acegiak_Buildable" Value="Scrap Metal:5" />
-    <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
-  </object>
-  <object Name="PlayerConveyorPadE" Inherits="ConveyorPad">
-    <part Name="Render" DisplayName="conveyor belt east" />
-    <part Name="ConveyorPad" Direction="E" Connections="E" />
-    <tag Name="acegiak_Buildable" Value="Scrap Metal:5" />
-    <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
-  </object>
-  <object Name="PlayerConveyorPadW" Inherits="ConveyorPad">
-    <part Name="Render" DisplayName="conveyor belt west" />
-    <part Name="ConveyorPad" Direction="W" Connections="W" />
-    <tag Name="acegiak_Buildable" Value="Scrap Metal:5" />
-    <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
-  </object>
-  
-  <object Name="ConveyorDrive" Load="Merge">
-      <tag Name="acegiak_Buildable" Value="Scrap 1:2;Scrap 3:1" />
+  <object Name="Crafted Metal Desk" Inherits="Wood Desk">
+    <part Name="Render" DisplayName="scrap metal desk" ColorString="&amp;c" />
+    <part Name="Description" Short="A cobbled-together metal desk, a shoddy facsimile made of rusted scrap and sweat." />
+    <part Name="Inventory"/>
   </object>
 
-  <object Name="Bed" Load="Merge">
-      <tag Name="acegiak_Buildable" Value="Bedroll:1;Scrap Wood:4" />
+  <object Name="CraftedConveyorPadN" Inherits="ConveyorPadN">
+    <part Name="Render" RenderLayer="1" TileColor="&amp;K^k" DisplayName="north conveyor belt" RenderString="-" ColorString="&amp;K^k" Occluding="false" RenderIfDark="true" />
   </object>
-  <object Name="Bedroll" Load="Merge">
-      <part Name="acegiak_Buildable" />
+  <object Name="CraftedConveyorPadS" Inherits="ConveyorPadS">
+    <part Name="Render" RenderLayer="1" TileColor="&amp;K^k" DisplayName="south conveyor belt" RenderString="-" ColorString="&amp;K^k" Occluding="false" RenderIfDark="true" />
   </object>
-  
-  </objects>
+  <object Name="CraftedConveyorPadE" Inherits="ConveyorPadE">
+    <part Name="Render" RenderLayer="1" TileColor="&amp;K^k" DisplayName="east conveyor belt" RenderString="-" ColorString="&amp;K^k" Occluding="false" RenderIfDark="true" />
+  </object>
+  <object Name="CraftedConveyorPadW" Inherits="ConveyorPadW">
+    <part Name="Render" RenderLayer="1" TileColor="&amp;K^k" DisplayName="west conveyor belt" RenderString="-" ColorString="&amp;K^k" Occluding="false" RenderIfDark="true" />
+  </object>
+
+  <object Name="CraftedWoodWallWithGearbox" Inherits="WoodWallWithGearbox">
+    <part Name="Render" DisplayName="brinestalk wall with gearbox" Tile="assets_content_textures_tiles_tile-1-18.png" DetailColor="k" RenderString="215" ColorString="&amp;w^y" Occluding="true" />
+    <part Name="Description" Short="Here are several stripped trunks of sallow brinestalk bonded with mud, inset with a gearbox to propagate power in perpetuity." />
+    <part Name="ItemDrop" PartsToDrop="Scrap Wood,100,4;Scrap Wood,75;Scrap Wood,50"/>
+  </object>
+
+  <object Name="BrineBridge" Load="Merge">
+    <tag Name="NoPassByMessage" />
+  </object>
+  <object Name="WoodFloor" Load="Merge">
+    <part Name="Render" DisplayName="wood floor" RenderString="#" RenderLayer="0" ColorString="&amp;w" Tile="tiles/sw_floor_brick1.bmp" DetailColor="W" Occluding="false" RenderIfDark="true" />
+    <tag Name="NoPassByMessage" />
+    <tag Name="BlocksDoors" Value="*delete" />
+    <part Name="ItemDrop" PartsToDrop="Scrap Wood,50"/>
+  </object>
+
+  <object Name="WoodenTorchpost" Inherits="Torchpost">
+    <part Name="Render" DisplayName="standing torch" RenderString="249" ColorString="&amp;R" DetailColor="w" Tile="tiles/sw_torch_nofire.png" RenderLayer="6" Occluding="false" />
+    <part Name="Description" Short="A brightly burning torch stands at attention in its post atop a pole of dried brinestalk." />
+    <removepart Name="Metal" />
+    <intproperty Name="Inorganic" Value="0" />
+  </object>
+
+  <object Name="StoneOven" Inherits="Oven">
+    <part Name="Render" DisplayName="stone oven" ColorString="&amp;y" DetailColor="o" RenderString="234" Tile="Items/sw_oven.bmp" Occluding="false" RenderIfDark="true" RenderLayer="6" />
+    <part Name="Description" Short="An oven cobbled of rocks and mortar. The heavy stones remain warm to the touch even when the fire is low." />
+  </object>
+
+  <object Name="CraftedWoodenMechanicalTransmission" Inherits="WoodenMechanicalTransmission">
+    <part Name="Render" DisplayName="wooden axle assembly" RenderString="216" ColorString="&amp;w" DetailColor="w" Occluding="false" />
+  </object>
+</objects>
