@@ -31,6 +31,8 @@ namespace qudbuilding
 		[ModSensitiveStaticCache(false)]
 		public static List<string> Ingredients;
 
+		protected static Action<object> handleError = MetricsManager.LogError;
+
 		[ModSensitiveCacheInit]
 		public static void Init()
 		{
@@ -45,14 +47,10 @@ namespace qudbuilding
 			BuildableList = new List<BuildableEntry>();
 			BuildablesByResult = new Dictionary<GameObjectBlueprint, List<BuildableEntry>>();
 			BuildablesByName = new Dictionary<string, BuildableEntry>();
-			List<string> Paths = new List<string>();
-			ModManager.ForEachFile("Buildables.xml", delegate(string path)
+			ModManager.ForEachFile("Buildables.xml", delegate(string path, ModInfo modInfo)
 			{
-				Paths.Add(path);
-			});
-			foreach (string item in Paths)
-			{
-				XmlTextReader xmlTextReader = new XmlTextReader(item);
+				handleError = modInfo.Error;
+				XmlTextReader xmlTextReader = new XmlTextReader(path);
 				xmlTextReader.WhitespaceHandling = WhitespaceHandling.None;
 				while (xmlTextReader.Read())
 				{
@@ -60,8 +58,12 @@ namespace qudbuilding
 					{
 						LoadBuildablesNode(xmlTextReader, isPrimary: false);
 					}
+					else if(xmlTextReader.NodeType == XmlNodeType.Element)
+					{
+						handleError($"Unknown node in Buildables.xml:{xmlTextReader.LineNumber} (expected 'buildables'): {xmlTextReader.Name}");
+					}
 				}
-			}
+			});
 			BuildablesByIngredient = new Dictionary<string, List<BuildableEntry>>();
 			Ingredients = new List<string>();
 			foreach (BuildableEntry buildableEntry in BuildableList)
@@ -92,6 +94,10 @@ namespace qudbuilding
 				if (Reader.Name == "buildable")
 				{
 					LoadBuildableNode(Reader, isPrimary);
+				}
+				else if (Reader.NodeType == XmlNodeType.Element)
+				{
+					handleError($"Unknown node in Buildables.xml:{Reader.LineNumber}:{Reader.LinePosition} (expected 'buildables'): {Reader.Name}");
 				}
 			}
 		}
