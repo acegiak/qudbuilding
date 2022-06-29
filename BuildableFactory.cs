@@ -1,5 +1,6 @@
-// Compile with `dotnet build -p:DefineConstants="PREVIEW_FEATURES"` to enable experimental liquid support.
-#define PREVIEW_FEATURES
+// Compile with `dotnet build -p:DefineConstants="PREVIEW_FEATURES"` to enable experimental feature support.
+// To play with those features, uncomment the following define IN ALL FILES.
+//#define PREVIEW_FEATURES
 
 using System;
 using System.Collections.Generic;
@@ -145,14 +146,11 @@ namespace qudbuilding
 			{
 				buildableEntry._BlueprintsString = requiredBlueprintsString;
 			}
-			// TODO: Implement liquid requirements handling
-			#if PREVIEW_FEATURES
 			string requiredLiquidsString = Reader.GetAttribute("RequiredLiquids");
 			if (!requiredLiquidsString.IsNullOrEmpty())
 			{
 				buildableEntry._LiquidsString = requiredLiquidsString;
 			}
-			#endif
 			// if we're not at the end
 			if (Reader.NodeType != XmlNodeType.EndElement && !Reader.IsEmptyElement)
 			{
@@ -172,13 +170,11 @@ namespace qudbuilding
 		}
 		public static List<BuildableEntry> GetBuildsWithIngredient(string ingredient)
 		{
-			#if PREVIEW_FEATURES
 			BaseLiquid liquid = LiquidVolume.getLiquid(ingredient);
 			if(liquid != null)
 			{
 				return GetBuildsWithLiquid(liquid);
 			}
-			#endif
 			GameObjectBlueprint blueprint = GameObjectFactory.Factory.GetBlueprintIfExists(ingredient);
 			if(blueprint != null)
 			{
@@ -192,14 +188,12 @@ namespace qudbuilding
 				buildableEntry => buildableEntry.BlueprintRequirements.ContainsKey(blueprint)
 			).ToList();
 		}
-		#if PREVIEW_FEATURES
 		public static List<BuildableEntry> GetBuildsWithLiquid(BaseLiquid liquid)
 		{
 			return BuildableFactory.BuildableList.Where(
 				buildableEntry => buildableEntry.LiquidRequirements.ContainsKey(liquid.ID)
 			).ToList();
 		}
-		#endif
 		public static bool IsValidBuildingIngredient(GameObject obj)
 		{
 			if (obj.IsTemporary && obj.GetPart<XRL.World.Parts.Temporary>()?.Duration != -1)
@@ -210,7 +204,6 @@ namespace qudbuilding
 			{
 				return false;
 			}
-			#if PREVIEW_FEATURES
 			LiquidVolume liquidVolume = obj.LiquidVolume;
 			if (liquidVolume != null && !liquidVolume.EffectivelySealed() && liquidVolume.Volume > 0 && obj.GetEpistemicStatus() != 0)
 			{
@@ -223,7 +216,6 @@ namespace qudbuilding
 				}
 				return true;
 			}
-			#endif
 			if (Ingredients.Contains(obj.Blueprint))
 			{
 				return true;

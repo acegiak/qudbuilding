@@ -1,4 +1,4 @@
-#define PREVIEW_FEATURES
+//#define PREVIEW_FEATURES
 
 using System;
 using System.Collections.Generic;
@@ -7,9 +7,7 @@ using XRL.World;
 using XRL.World.Parts;
 using XRL.Language;
 using qudbuilding.Utilities;
-#if PREVIEW_FEATURES
 using XRL.Liquids;
-#endif
 
 namespace qudbuilding
 {
@@ -49,8 +47,6 @@ namespace qudbuilding
 				return this._BlueprintRequirements;
 			}
 		}
-
-		#if PREVIEW_FEATURES
 		public string _LiquidsString = ""; 
 
 		[NonSerialized]
@@ -75,7 +71,6 @@ namespace qudbuilding
 				return this._LiquidRequirements;
 			}
 		}
-		#endif
 
 		public void StartAssembling(GameObject who, int amount = 1, Cell targetCell = null)
 		{
@@ -134,7 +129,6 @@ namespace qudbuilding
 					}
 				}
 			}
-			#if PREVIEW_FEATURES
 			foreach (KeyValuePair<string, int> entry in LiquidRequirements)
 			{
 				List<GameObject> liquidContainers = who.GetInventoryDirect(item => item.LiquidVolume?.IsPureLiquid(entry.Key) ?? false);
@@ -153,7 +147,6 @@ namespace qudbuilding
 					}
 				}
 			}
-			#endif
 			return GameObject.create(Result.Name, beforeObjectCreated: delegate(GameObject obj)
 				{
 					obj.RemovePart<Graffitied>();
@@ -168,13 +161,11 @@ namespace qudbuilding
 				List<GameObject> bits = who.GetInventoryDirect(item => BuildableFactory.IsValidBuildingIngredient(item) && item.GetBlueprint().DescendsFrom(entry.Key.Name));
 				if (bits.Select(item => item.Count).Sum() < entry.Value) return false;
 			}
-			#if PREVIEW_FEATURES
 			foreach (KeyValuePair<string, int> entry in LiquidRequirements)
 			{
 				List<GameObject> liquidContainers = who.GetInventoryDirect(item => item.LiquidVolume?.IsPureLiquid(entry.Key) ?? false);
 				if(liquidContainers.Select(item => item.LiquidVolume.Amount(entry.Key)).Sum() < entry.Value) return false;
 			}
-			#endif
 			return true;
 		}
 		/// Return the maximum number of times this item can be built with the ingredients in the inventory
@@ -188,14 +179,12 @@ namespace qudbuilding
 				count = Math.Min(count, bits.Select(item => item.Count).Sum()/entry.Value);
 				if (count == 0) return 0;
 			}
-			#if PREVIEW_FEATURES
 			foreach (KeyValuePair<string, int> entry in LiquidRequirements)
 			{
 				List<GameObject> liquidContainers = who.GetInventoryDirect(item => item.LiquidVolume?.IsPureLiquid(entry.Key) ?? false);
 				count = Math.Min(count, liquidContainers.Select(item => item.LiquidVolume.Amount(entry.Key)).Sum() / entry.Value);
 				if (count == 0) return 0;
 			}
-			#endif
 			return count;
 		}
 		/// Return a description of what needed ingredients are missing
@@ -211,7 +200,6 @@ namespace qudbuilding
 					missingNames.Add(QudBuilding_Grammar.NumericalPluralize(entry.Key.DisplayName(), remaining));
 				}
 			}
-			#if PREVIEW_FEATURES
 			foreach (KeyValuePair<string, int> entry in LiquidRequirements)
 			{
 				List<GameObject> liquidContainers = who.GetInventoryDirect(item => item.LiquidVolume?.IsPureLiquid(entry.Key) ?? false);
@@ -224,7 +212,6 @@ namespace qudbuilding
 					}
 				}
 			}
-			#endif
 			return Grammar.MakeAndList(missingNames);
 		}
 	}
