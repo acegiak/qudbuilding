@@ -44,6 +44,8 @@
   <buildable Result="CraftedWoodenMechanicalTransmission" RequiredBlueprints="Scrap Wood:2" EnergyCost="500"/>
   <buildable Result="Millstone" RequiredBlueprints="Large Stone:5"/>
   <buildable Result="StoneOven" RequiredBlueprints="Large Stone:5"/>
+  <buildable Name="brinestalk scrap wax torch" Result="Torch" RequiredBlueprints="Brinestalk Scrap:1" RequiredLiquids="wax:1" IsItem="True" EnergyCost="5000"/>
+  <buildable Name="dogthorn wood wax torch" Result="Torch" RequiredBlueprints="Scrap Wood:1" RequiredLiquids="wax:1" IsItem="True" EnergyCost="5000"/>
   <!-- (todo add canvas) -->
   <!-- <buildable Result="Wooden Wind Turbine" RequiredBlueprints="Scrap Wood:10"/>-->
 </buildables>
