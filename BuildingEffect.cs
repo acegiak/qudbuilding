@@ -63,6 +63,7 @@ namespace XRL.World.Effects
 			{
 				XRL.Messages.MessageQueue.AddPlayerMessage($"&yYou finish {((targetCell != null) ? "building" : "crafting")}.");
 			}
+			TurnTimer.Stop();
 			base.Remove(Object);
 		}
 
@@ -86,11 +87,11 @@ namespace XRL.World.Effects
 
 		public override bool WantEvent(int ID, int cascade)
 		{
-			if (!base.WantEvent(ID, cascade))
+			if (ID == BeforeTakeActionEvent.ID || ID == EndTurnEvent.ID)
 			{
-				return ID == BeforeTakeActionEvent.ID;
+				return true;
 			}
-			return true;
+			return base.WantEvent(ID, cascade);
 		}
 
 		public override void Register(GameObject Object)
@@ -125,15 +126,11 @@ namespace XRL.World.Effects
 			if (TurnTimer.IsRunning)
 			{
 				TurnTimer.Stop();
-				int autoexploreRate = Options.AutoexploreRate;
-				if (autoexploreRate != 0)
+				int num33 = 1000 / 20;
+				long elapsedMilliseconds = TurnTimer.ElapsedMilliseconds;
+				if (elapsedMilliseconds < num33)
 				{
-					int num33 = 1000 / autoexploreRate;
-					long elapsedMilliseconds = TurnTimer.ElapsedMilliseconds;
-					if (elapsedMilliseconds < num33)
-					{
-						System.Threading.Thread.Sleep((int)(num33 - elapsedMilliseconds));
-					}
+					System.Threading.Thread.Sleep((int)(num33 - elapsedMilliseconds));
 				}
 			}
 			return base.HandleEvent(E);
@@ -141,6 +138,8 @@ namespace XRL.World.Effects
 
 		public override bool HandleEvent(BeforeTakeActionEvent E)
 		{
+			TurnTimer.Reset();
+			TurnTimer.Start();
 			if (Keyboard.kbhit()) // cancelled by keystroke
 			{
 				Object.RemoveEffect(this);
@@ -176,8 +175,6 @@ namespace XRL.World.Effects
 						}
 					}
 				}
-				TurnTimer.Reset();
-				TurnTimer.Start();
 				return false;
 			}
 			return base.HandleEvent(E);
