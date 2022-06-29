@@ -106,10 +106,11 @@ namespace qudbuilding
 		{
 			BuildableEntry buildableEntry;
 			string resultString = Reader.GetAttribute("Result");
-			string recipeName = Reader.GetAttribute("Name") ?? resultString;
-			if (!BuildablesByName.TryGetValue(recipeName, out buildableEntry))
+			string recipeName = Reader.GetAttribute("Name");
+			string recipeKey = recipeName ?? resultString;
+			if (!BuildablesByName.TryGetValue(recipeKey, out buildableEntry))
 			{
-				BuildablesByName[recipeName] = buildableEntry = new BuildableEntry
+				BuildablesByName[recipeKey] = buildableEntry = new BuildableEntry
 				{
 					Name = recipeName
 				};

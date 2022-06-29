@@ -32,12 +32,12 @@ namespace XRL.World.Effects
 			this.Amount = Amount;
 			this.OriginalAmount = Amount;
 			this.targetCell = targetCell;
-			MetricsManager.LogWarning($"Building {this.Amount}x {this.toBuild.Result.DisplayName()} for {this.toBuild.EnergyCost} energy (duration {this.Duration}, total {this.toBuild.EnergyCost * Amount / 1000})");
+			MetricsManager.LogWarning($"Building {this.Amount}x {this.toBuild.DisplayName} for {this.toBuild.EnergyCost} energy (duration {this.Duration}, total {this.toBuild.EnergyCost * Amount / 1000})");
 		}
 
 		public override string GetDetails()
 		{
-			return $"Building {QudBuilding_Grammar.NumericalPluralize(toBuild.Result.DisplayName(), Amount)}.\nCan be interrupted if damage is taken.";
+			return $"Building {QudBuilding_Grammar.NumericalPluralize(toBuild.DisplayName, Amount)}.\nCan be interrupted if damage is taken.";
 		}
 
 		public override string GetDescription()
@@ -81,7 +81,7 @@ namespace XRL.World.Effects
 				}
 			}
 			string verb = (targetCell != null) ? "build" : "craft";
-			XRL.Messages.MessageQueue.AddPlayerMessage($"&yYou {verb} {QudBuilding_Grammar.NumericalPluralize(toBuild.Result.DisplayName(), num)}.");
+			XRL.Messages.MessageQueue.AddPlayerMessage($"&yYou {verb} {QudBuilding_Grammar.NumericalPluralize(toBuild.DisplayName, num)}.");
 		}
 
 		public override bool WantEvent(int ID, int cascade)
