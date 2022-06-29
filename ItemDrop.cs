@@ -41,8 +41,8 @@ namespace XRL.World.Parts
 					}
 					string item = parts[0];
 					int chance = (parts.Length > 1) ? Convert.ToInt32(parts[1]) : 100;
-					int amount = (parts.Length > 2) ? Convert.ToInt32(parts[2]) : 1;
-					if (QudBuilding_Random.Next(0, 99) < chance)
+					int amount = (parts.Length > 2) ? XRL.Rules.Stat.RollCached(parts[2]) : 1;
+					if (chance.in100())
 					{
 						for (int i = 0; i < amount; i++)
 						{
