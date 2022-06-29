@@ -51,7 +51,7 @@ namespace XRL.World.Parts.Skill
 		public bool TryBuildPlayer(BuildableEntry toBuild) {
 			if (!toBuild.CanBuild(The.Player))
 			{
-				Popup.Show($"You don't have the materials to build {XRL.Language.Grammar.A(toBuild.Result.DisplayName())}! You're missing {toBuild.GetMissingIngredients(ParentObject)}!");
+				Popup.Show($"You don't have the materials to build {XRL.Language.Grammar.A(toBuild.DisplayName)}! You're missing {toBuild.GetMissingIngredients(ParentObject)}!");
 				return false;
 			}
 			if (!toBuild.IsItem)
@@ -71,7 +71,7 @@ namespace XRL.World.Parts.Skill
 					Popup.Show("There's something in the way!");
 					return false;
 				}
-				XRL.Messages.MessageQueue.AddPlayerMessage("You begin building " + XRL.Language.Grammar.A(toBuild.Result.DisplayName() + "."));
+				XRL.Messages.MessageQueue.AddPlayerMessage("You begin building " + XRL.Language.Grammar.A(toBuild.DisplayName + "."), "&y");
 				toBuild.StartAssembling(The.Player, targetCell: targetCell);
 			} else {
 				int amountToBuild = Popup.AskNumber("How many do you want to craft?", 1, 0, toBuild.MaxBuildCount(The.Player)) ?? 0;
@@ -79,7 +79,7 @@ namespace XRL.World.Parts.Skill
 				{
 					return false;
 				}
-				XRL.Messages.MessageQueue.AddPlayerMessage("You begin crafting " + QudBuilding_Grammar.NumericalPluralize(toBuild.Result.DisplayName(), amountToBuild) + ".");
+				XRL.Messages.MessageQueue.AddPlayerMessage("You begin crafting " + QudBuilding_Grammar.NumericalPluralize(toBuild.DisplayName, amountToBuild) + ".", "&y");
 				toBuild.StartAssembling(The.Player, amountToBuild);
 			}
 			LastBuilt = toBuild;
@@ -103,13 +103,13 @@ namespace XRL.World.Parts.Skill
 				if (buildableEntry.CanBuild(ParentObject))
 				{
 					string itemTag = buildableEntry.IsItem ? "{{gray|[item]}} " : "";
-					ChoiceList.Add($"{itemTag}{buildableEntry.Result.DisplayName()}");
+					ChoiceList.Add($"{itemTag}{buildableEntry.DisplayName}");
 				} else if (ShowUnavailable) {
 					string itemTag = buildableEntry.IsItem ? "[item] " : "";
-					ChoiceList.Add("{{dark gray|" + itemTag + buildableEntry.Result.DisplayName() + "}} {{dark red|(unavailable)}}");
+					ChoiceList.Add("{{dark gray|" + itemTag + buildableEntry.DisplayName + "}} {{dark red|(unavailable)}}");
 				}
 			}
-			int selectedidx = Popup.ShowOptionList("Building", ChoiceList.ToArray(), HotkeyList.ToArray(), 0, "Choose what to build.", 60, RespectOptionNewlines: false, AllowEscape: true);
+			int selectedidx = Popup.ShowOptionList("Building", ChoiceList.ToArray(), HotkeyList.ToArray(), 0, "Choose what to build.", 78, RespectOptionNewlines: false, AllowEscape: true);
 			if (selectedidx < 0)
 			{
 				return null;

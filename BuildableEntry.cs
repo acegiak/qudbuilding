@@ -19,6 +19,8 @@ namespace qudbuilding
 
 		public GameObjectBlueprint Result;
 
+		public string DisplayName => Name ?? Result.DisplayName();
+
 		public int EnergyCost = 10000;
 
 		public bool IsItem = false; /// Does the output go in our inventory, and can we craft multiple at once?
@@ -98,7 +100,7 @@ namespace qudbuilding
 				}
 				who.UseEnergy(totalCost);
 				string verb = (targetCell != null) ? "build" : "craft";
-				XRL.Messages.MessageQueue.AddPlayerMessage($"&yYou {verb} {QudBuilding_Grammar.NumericalPluralize(Result.DisplayName(), amount)}.");
+				XRL.Messages.MessageQueue.AddPlayerMessage($"&yYou {verb} {QudBuilding_Grammar.NumericalPluralize(DisplayName, amount)}.");
 			}
 		}
 
@@ -135,7 +137,7 @@ namespace qudbuilding
 			#if PREVIEW_FEATURES
 			foreach (KeyValuePair<string, int> entry in LiquidRequirements)
 			{
-				List<GameObject> liquidContainers = who.GetInventoryDirect(item => item.LiquidVolume?.hasLiquid(entry.Key) ?? false);
+				List<GameObject> liquidContainers = who.GetInventoryDirect(item => item.LiquidVolume?.IsPureLiquid(entry.Key) ?? false);
 				int liquidCount = 0;
 				foreach (GameObject liquidContainer in liquidContainers)
 				{
@@ -169,7 +171,7 @@ namespace qudbuilding
 			#if PREVIEW_FEATURES
 			foreach (KeyValuePair<string, int> entry in LiquidRequirements)
 			{
-				List<GameObject> liquidContainers = who.GetInventoryDirect(item => item.LiquidVolume?.hasLiquid(entry.Key) ?? false);
+				List<GameObject> liquidContainers = who.GetInventoryDirect(item => item.LiquidVolume?.IsPureLiquid(entry.Key) ?? false);
 				if(liquidContainers.Select(item => item.LiquidVolume.Amount(entry.Key)).Sum() < entry.Value) return false;
 			}
 			#endif
@@ -189,7 +191,7 @@ namespace qudbuilding
 			#if PREVIEW_FEATURES
 			foreach (KeyValuePair<string, int> entry in LiquidRequirements)
 			{
-				List<GameObject> liquidContainers = who.GetInventoryDirect(item => item.LiquidVolume?.hasLiquid(entry.Key) ?? false);
+				List<GameObject> liquidContainers = who.GetInventoryDirect(item => item.LiquidVolume?.IsPureLiquid(entry.Key) ?? false);
 				count = Math.Min(count, liquidContainers.Select(item => item.LiquidVolume.Amount(entry.Key)).Sum() / entry.Value);
 				if (count == 0) return 0;
 			}
@@ -212,7 +214,7 @@ namespace qudbuilding
 			#if PREVIEW_FEATURES
 			foreach (KeyValuePair<string, int> entry in LiquidRequirements)
 			{
-				List<GameObject> liquidContainers = who.GetInventoryDirect(item => item.LiquidVolume?.hasLiquid(entry.Key) ?? false);
+				List<GameObject> liquidContainers = who.GetInventoryDirect(item => item.LiquidVolume?.IsPureLiquid(entry.Key) ?? false);
 				if (liquidContainers.Select(item => item.LiquidVolume.Amount(entry.Key)).Sum() < entry.Value)
 				{
 					int remaining = entry.Value - liquidContainers.Select(item => item.LiquidVolume.Amount(entry.Key)).Sum();
