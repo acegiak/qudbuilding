@@ -61,7 +61,7 @@ namespace XRL.World.Effects
 			}
 			if (Amount < OriginalAmount) // we've done work!
 			{
-				XRL.Messages.MessageQueue.AddPlayerMessage($"&yYou finish {((targetCell != null) ? "building" : "crafting")}.");
+				XRL.Messages.MessageQueue.AddPlayerMessage($"You finish {((targetCell != null) ? "building" : "crafting")}.", "$y");
 			}
 			TurnTimer.Stop();
 			base.Remove(Object);

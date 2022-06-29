@@ -6,6 +6,14 @@
   <object Name="BaseWallStone" Load="Merge">
     <part Name="ItemDrop" PartsToDrop="Rubble,5;Large Stone;Large Stone,75;Large Stone,50"/>
   </object>
+
+  <object Name="BasePlantWall" Load="Merge">
+    <removepart Name="ItemDrop" />
+  </object>
+
+  <object Name="BaseMushroomWall" Load="Merge">
+    <removepart Name="ItemDrop" />
+  </object>
   
   <object Name="MortarWall" Inherits="BaseWallRock">
     <part Name="Render" DisplayName="cobblestone wall" ColorString="&amp;w^y" Occluding="true" />
@@ -57,6 +65,13 @@
   </object>
   <object Name="IronFence" Load="Merge">
     <part Name="ItemDrop" PartsToDrop="Scrap Metal,100,2;Scrap Metal,75;Scrap Metal,50"/>
+  </object>
+
+  <object Name="WoodWall" Load="Merge">
+    <part Name="ItemDrop" PartsToDrop="Brinestalk Scrap,100,2d3"/>
+  </object>
+  <object Name="Petal-Strewn WoodWall" Load="Merge">
+    <part Name="ItemDrop" PartsToDrop="Brinestalk Scrap,100,2d3;Flower,100,2d5"/>
   </object>
 
   <object Name="Crafted Brinestalk Chest" Inherits="Chest">

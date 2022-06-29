@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <populations>
-  <population Name="Forage_TerrainSaltmarsh" Load="Merge">
+  <population Name="Forage_TerrainSaltmarsh_Surface" Load="Merge">
     <group Name="Items" Style="pickone">
         <!-- <object Blueprint="Clay" Number="1d4" /> --> <!-- doesn't exist yet -->
         <object Blueprint="Brinestalk Scrap" Number="4-8" />
