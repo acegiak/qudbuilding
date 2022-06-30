@@ -77,10 +77,12 @@
   <object Name="Crafted Brinestalk Chest" Inherits="Chest">
     <part Name="Render" DisplayName="brinestalk chest" />
     <part Name="ItemDrop" PartsToDrop="Brinestalk Scrap,100,2;Brinestalk Scrap,75;Brinestalk Scrap,50"/>
+    <tag Name="AutoexploreChest" Value="*delete" />
   </object>
   <object Name="Crafted Wooden Chest" Inherits="Chest">
     <part Name="Render" DisplayName="wooden chest" />
     <part Name="Description" Short="A simple chest made from scrap wood." />
+    <tag Name="AutoexploreChest" Value="*delete" />
   </object>
   <object Name="Wooden Buckler" Load="Merge">
     <part Name="ItemDrop" PartsToDrop="Scrap Wood,35"/>
@@ -106,12 +108,16 @@
   <object Name="Crafted Wood Desk" Inherits="Wood Desk">
     <part Name="Render" DisplayName="brinestalk desk" ColorString="&amp;c" />
     <part Name="Description" Short="A simple wooden desk made of dried brinestalk." />
+    <removepart Name="Inventory"/>
     <part Name="Inventory"/>
+    <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
   </object>
-  <object Name="Crafted Metal Desk" Inherits="Wood Desk">
+  <object Name="Crafted Metal Desk" Inherits="Metal Desk">
     <part Name="Render" DisplayName="scrap metal desk" ColorString="&amp;c" />
     <part Name="Description" Short="A cobbled-together metal desk, a shoddy facsimile made of rusted scrap and sweat." />
+    <removepart Name="Inventory"/>
     <part Name="Inventory"/>
+    <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
   </object>
 
   <object Name="CraftedConveyorPadN" Inherits="ConveyorPadN">
@@ -131,6 +137,7 @@
     <part Name="Render" DisplayName="brinestalk wall with gearbox" Tile="assets_content_textures_tiles_tile-1-18.png" DetailColor="k" RenderString="215" ColorString="&amp;w^y" Occluding="true" />
     <part Name="Description" Short="Here are several stripped trunks of sallow brinestalk bonded with mud, inset with a gearbox to propagate power in perpetuity." />
     <part Name="ItemDrop" PartsToDrop="Scrap Wood,100,4;Scrap Wood,75;Scrap Wood,50"/>
+    <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
   </object>
 
   <object Name="BrineBridge" Load="Merge">
@@ -148,14 +155,17 @@
     <part Name="Description" Short="A brightly burning torch stands at attention in its post atop a pole of dried brinestalk." />
     <removepart Name="Metal" />
     <intproperty Name="Inorganic" Value="0" />
+    <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
   </object>
 
   <object Name="StoneOven" Inherits="Oven">
     <part Name="Render" DisplayName="stone oven" ColorString="&amp;y" DetailColor="o" RenderString="234" Tile="Items/sw_oven.bmp" Occluding="false" RenderIfDark="true" RenderLayer="6" />
     <part Name="Description" Short="An oven cobbled of rocks and mortar. The heavy stones remain warm to the touch even when the fire is low." />
+    <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
   </object>
 
   <object Name="CraftedWoodenMechanicalTransmission" Inherits="WoodenMechanicalTransmission">
     <part Name="Render" DisplayName="wooden axle assembly" RenderString="216" ColorString="&amp;w" DetailColor="w" Occluding="false" />
+    <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
   </object>
 </objects>
