@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<buildables>
+  <buildable Result="BrinestalkStakes" RequiredBlueprints="Brinestalk Scrap:4" EnergyCost="100"/>
+  <buildable Result="BrinestalkFence" RequiredBlueprints="Brinestalk Scrap:4"/>
+  <buildable Result="Brinestalk Gate" RequiredBlueprints="Brinestalk Scrap:4;Scrap Metal:1"/>
+  <buildable Result="IronFence" RequiredBlueprints="Scrap Metal:4"/>
+  <buildable Result="Iron Gate" RequiredBlueprints="Scrap Metal:5"/>
+  <buildable Result="PlayerSign" RequiredBlueprints="Scrap Wood:3"/>
+  <buildable Result="CraftedConveyorPadN" RequiredBlueprints="Scrap Metal:5"/>
+  <buildable Result="CraftedConveyorPadS" RequiredBlueprints="Scrap Metal:5"/>
+  <buildable Result="CraftedConveyorPadE" RequiredBlueprints="Scrap Metal:5"/>
+  <buildable Result="CraftedConveyorPadW" RequiredBlueprints="Scrap Metal:5"/>
+  <buildable Result="ConveyorDrive" RequiredBlueprints="Scrap 1:2;Scrap 3:1"/>
+  <buildable Result="Bed" RequiredBlueprints="Bedroll:1;Scrap Wood:5"/>
+  <buildable Result="Stool" RequiredBlueprints="Scrap Wood:2"/>
+  <buildable Result="Chair" RequiredBlueprints="Scrap Wood:3"/>
+  <buildable Result="Bench" RequiredBlueprints="Scrap Wood:5"/>
+  <buildable Result="Table" RequiredBlueprints="Scrap Wood:4"/>
+  <buildable Result="Metal Table" RequiredBlueprints="Scrap Metal:4"/>
+  <buildable Result="Metal Workbench" RequiredBlueprints="Scrap Metal:4"/>
+  <buildable Result="Desk" RequiredBlueprints="Scrap Wood:4"/>
+  <buildable Result="Crafted Wood Desk" RequiredBlueprints="Brinestalk Scrap:4"/>
+  <buildable Result="Crafted Metal Desk" RequiredBlueprints="Scrap Metal:4"/>
+  <buildable Result="Workbench" RequiredBlueprints="Scrap Wood:4"/>
+  <buildable Result="Dresser" RequiredBlueprints="Scrap Wood:4"/>
+  <buildable Result="Bookshelf" RequiredBlueprints="Scrap Wood:4"/>
+  <buildable Result="Crafted Wooden Chest" RequiredBlueprints="Scrap Wood:5;Scrap Metal:2"/>
+  <buildable Result="Crafted Brinestalk Chest" RequiredBlueprints="Brinestalk Scrap:5;Scrap Metal:2"/>
+  <buildable Result="Torchpost" RequiredBlueprints="Torch:1;Scrap Metal:2;Scrap Wood:2"/>
+  <buildable Result="WoodenTorchpost" RequiredBlueprints="Torch:1;Brinestalk Scrap:2"/>
+  <buildable Result="WoodWall" RequiredBlueprints="Brinestalk Scrap:6"/>
+  <buildable Result="Petal-Strewn WoodWall" RequiredBlueprints="Brinestalk Scrap:6;Flower:10"/>
+  <buildable Result="BrinestalkArrowslit" RequiredBlueprints="Brinestalk Scrap:3"/>
+  <buildable Result="CraftedWoodWallWithGearbox" RequiredBlueprints="Brinestalk Scrap:6"/>
+  <buildable Result="WoodFloor" RequiredBlueprints="Scrap Wood:1"/>
+  <buildable Result="BrineBridge" RequiredBlueprints="Brinestalk Scrap:1"/>
+  <buildable Result="Woven Basket" RequiredBlueprints="Brinestalk Fiber:3"/>
+  <buildable Result="Wood Door" RequiredBlueprints="Scrap Wood:4"/>
+  <buildable Result="WoodFence" RequiredBlueprints="Scrap Wood:4"/>
+  <buildable Result="Metal Door" RequiredBlueprints="Scrap Metal:4"/>
+  <buildable Result="MortarWall" RequiredBlueprints="Large Stone:3"/>
+  <buildable Result="Rubble" RequiredBlueprints="Large Stone:3" EnergyCost="500"/>
+  <buildable Result="Wooden Water Wheel" RequiredBlueprints="Scrap Wood:10"/>
+  <buildable Result="CraftedWoodenMechanicalTransmission" RequiredBlueprints="Scrap Wood:2" EnergyCost="500"/>
+  <buildable Result="Millstone" RequiredBlueprints="Large Stone:5"/>
+  <buildable Result="StoneOven" RequiredBlueprints="Large Stone:5"/>
+  <buildable Name="brinestalk scrap wax torch" Result="Torch" RequiredBlueprints="Brinestalk Scrap:1" RequiredLiquids="wax:1" IsItem="True" EnergyCost="5000"/>
+  <buildable Name="dogthorn wood wax torch" Result="Torch" RequiredBlueprints="Scrap Wood:1" RequiredLiquids="wax:1" IsItem="True" EnergyCost="5000"/>
+  <!-- (todo add canvas) -->
+  <!-- <buildable Result="Wooden Wind Turbine" RequiredBlueprints="Scrap Wood:10"/>-->
+</buildables>
