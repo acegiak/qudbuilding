@@ -138,13 +138,16 @@ namespace XRL.World.Effects
 
 		public override bool HandleEvent(BeforeTakeActionEvent E)
 		{
-			TurnTimer.Reset();
-			TurnTimer.Start();
-			if (Keyboard.kbhit()) // cancelled by keystroke
+			if (Object.IsPlayer())
 			{
-				Object.RemoveEffect(this);
-				Keyboard.getch();
-				return false;
+				TurnTimer.Reset();
+				TurnTimer.Start();
+				if (Keyboard.kbhit()) // cancelled by keystroke
+				{
+					Object.RemoveEffect(this);
+					Keyboard.getch();
+					return false;
+				}
 			}
 			if (!Object.CanMoveExtremities())
 			{
