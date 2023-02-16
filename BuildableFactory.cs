@@ -219,7 +219,7 @@ namespace qudbuilding
 				}
 				return true;
 			}
-			if (Ingredients.Contains(obj.Blueprint))
+			if (Ingredients.Any(candidate_ingredient => GameObjectFactory.Factory.GetBlueprint(obj.Blueprint).DescendsFrom(candidate_ingredient)))
 			{
 				return true;
 			}
