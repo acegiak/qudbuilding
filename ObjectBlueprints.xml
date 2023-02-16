@@ -71,7 +71,7 @@
     <part Name="ItemDrop" PartsToDrop="Brinestalk Scrap,100,2d3"/>
   </object>
   <object Name="Petal-Strewn WoodWall" Load="Merge">
-    <part Name="ItemDrop" PartsToDrop="Brinestalk Scrap,100,2d3;Flower,100,2d5"/>
+    <part Name="ItemDrop" PartsToDrop="Brinestalk Scrap,100,2d3;Flowers,100,2d5"/>
   </object>
 
   <object Name="Crafted Brinestalk Chest" Inherits="Chest">

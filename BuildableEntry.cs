@@ -40,7 +40,17 @@ namespace qudbuilding
 						foreach(string blueprintEntry in _BlueprintsString.Split(';'))
 						{
 							string[] entries = blueprintEntry.Split(':').Select(s => s.Trim()).ToArray();
-							this._BlueprintRequirements.Add(GameObjectFactory.Factory.GetBlueprint(entries[0].Trim()),Convert.ToInt32(entries[1]));
+							string blueprintName = entries[0].Trim();
+							int blueprintAmount = Convert.ToInt32(entries[1]);
+							GameObjectBlueprint requiredBlueprint = GameObjectFactory.Factory.GetBlueprintIfExists(blueprintName);
+							if(requiredBlueprint is null)
+							{
+								MetricsManager.LogError($"Required blueprint {blueprintName} for {DisplayName} does not exist!");
+							}
+							else
+							{
+								this._BlueprintRequirements.Add(requiredBlueprint, blueprintAmount);
+							}
 						}
 					}
 				}
