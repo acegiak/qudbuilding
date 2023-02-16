@@ -17,6 +17,14 @@ namespace qudbuilding
 	[HasModSensitiveStaticCache]
 	public class BuildableFactory
 	{
+
+		private static readonly Dictionary<string, Action<XmlDataHelper>> rootHandlers = new Dictionary<string, Action<XmlDataHelper>> { { "buildables", HandleBuildablesNode } };
+
+		private static readonly Dictionary<string, Action<XmlDataHelper>> leafHandlers = new Dictionary<string, Action<XmlDataHelper>>
+		{
+			{ "buildable", HandleBuildableNode }
+		};
+		
 		[ModSensitiveStaticCache(false)]
 		public static List<BuildableEntry> BuildableList;
 
@@ -32,8 +40,6 @@ namespace qudbuilding
 		[ModSensitiveStaticCache(false)]
 		public static List<string> Ingredients;
 
-		protected static Action<object> handleError = MetricsManager.LogError;
-
 		[ModSensitiveCacheInit]
 		public static void Init()
 		{
@@ -48,23 +54,22 @@ namespace qudbuilding
 			BuildableList = new List<BuildableEntry>();
 			BuildablesByResult = new Dictionary<GameObjectBlueprint, List<BuildableEntry>>();
 			BuildablesByName = new Dictionary<string, BuildableEntry>();
-			ModManager.ForEachFile("Buildables.xml", delegate(string path, ModInfo modInfo)
+			foreach (XmlDataHelper item in DataManager.YieldXMLStreamsWithRoot("buildables"))
 			{
-				handleError = modInfo.Error;
-				XmlTextReader xmlTextReader = new XmlTextReader(path);
-				xmlTextReader.WhitespaceHandling = WhitespaceHandling.None;
-				while (xmlTextReader.Read())
+				try
 				{
-					if (xmlTextReader.Name == "buildables")
-					{
-						LoadBuildablesNode(xmlTextReader, isPrimary: false);
-					}
-					else if(xmlTextReader.NodeType == XmlNodeType.Element)
-					{
-						handleError($"Unknown node in Buildables.xml:{xmlTextReader.LineNumber} (expected 'buildables'): {xmlTextReader.Name}");
-					}
+					item.HandleNodes(rootHandlers);
 				}
-			});
+				catch (Exception message)
+				{
+					MetricsManager.LogPotentialModError(item.modInfo, message);
+				}
+			}
+			PostLoad();
+		}
+
+		private static void PostLoad()
+		{
 			BuildablesByIngredient = new Dictionary<string, List<BuildableEntry>>();
 			Ingredients = new List<string>();
 			foreach (BuildableEntry buildableEntry in BuildableList)
@@ -88,28 +93,19 @@ namespace qudbuilding
 			}
 		}
 
-		public static void LoadBuildablesNode(XmlTextReader Reader, bool isPrimary = true)
+		public static void HandleBuildablesNode(XmlDataHelper xml)
 		{
-			while (Reader.Read())
-			{
-				if (Reader.Name == "buildable")
-				{
-					LoadBuildableNode(Reader, isPrimary);
-				}
-				else if (Reader.NodeType == XmlNodeType.Element)
-				{
-					handleError($"Unknown node in Buildables.xml:{Reader.LineNumber}:{Reader.LinePosition} (expected 'buildables'): {Reader.Name}");
-				}
-			}
+			xml.HandleNodes(leafHandlers);
 		}
 
-		public static void LoadBuildableNode(XmlTextReader Reader, bool isPrimary = true)
+		public static void HandleBuildableNode(XmlTextReader Reader)
 		{
 			BuildableEntry buildableEntry;
 			string resultString = Reader.GetAttribute("Result");
 			string recipeName = Reader.GetAttribute("Name");
 			string recipeKey = recipeName ?? resultString;
-			if (!BuildablesByName.TryGetValue(recipeKey, out buildableEntry))
+			string loadMode = Reader.GetAttribute("Load");
+			if (loadMode == "Replace" || !BuildablesByName.TryGetValue(recipeKey, out buildableEntry))
 			{
 				BuildablesByName[recipeKey] = buildableEntry = new BuildableEntry
 				{
@@ -119,19 +115,26 @@ namespace qudbuilding
 			}
 			if (!resultString.IsNullOrEmpty())
 			{
-				GameObjectBlueprint resultBlueprint = GameObjectFactory.Factory.GetBlueprint(resultString);
-				List<BuildableEntry> items;
-				if(BuildablesByResult.TryGetValue(resultBlueprint, out items))
+				GameObjectBlueprint resultBlueprint = GameObjectFactory.Factory.GetBlueprintIfExists(resultString);
+				if(resultBlueprint is null)
 				{
-					items.Add(buildableEntry);
+					MetricsManager.LogError($"Undefined result blueprint in Buildables.xml:{Reader.LineNumber}: {resultString}");
 				}
 				else
 				{
-					BuildablesByResult.Add(resultBlueprint, new List<BuildableEntry>{ buildableEntry });
-				}
-				if (!resultString.IsNullOrEmpty())
-				{
-					buildableEntry.Result = resultBlueprint;
+					List<BuildableEntry> items;
+					if(BuildablesByResult.TryGetValue(resultBlueprint, out items))
+					{
+						items.Add(buildableEntry);
+					}
+					else
+					{
+						BuildablesByResult.Add(resultBlueprint, new List<BuildableEntry>{ buildableEntry });
+					}
+					if (!resultString.IsNullOrEmpty())
+					{
+						buildableEntry.Result = resultBlueprint;
+					}
 				}
 			}
 			string energyCostString = Reader.GetAttribute("EnergyCost");
