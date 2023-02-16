@@ -29,7 +29,7 @@
   <buildable Result="Torchpost" RequiredBlueprints="Torch:1;Scrap Metal:2;Scrap Wood:2"/>
   <buildable Result="WoodenTorchpost" RequiredBlueprints="Torch:1;Brinestalk Scrap:2"/>
   <buildable Result="WoodWall" RequiredBlueprints="Brinestalk Scrap:6"/>
-  <buildable Result="Petal-Strewn WoodWall" RequiredBlueprints="Brinestalk Scrap:6;Flower:10"/>
+  <buildable Result="Petal-Strewn WoodWall" RequiredBlueprints="Brinestalk Scrap:6;Flowers:10"/>
   <buildable Result="BrinestalkArrowslit" RequiredBlueprints="Brinestalk Scrap:3"/>
   <buildable Result="CraftedWoodWallWithGearbox" RequiredBlueprints="Brinestalk Scrap:6"/>
   <buildable Result="WoodFloor" RequiredBlueprints="Scrap Wood:1"/>
