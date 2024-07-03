@@ -29,7 +29,7 @@ namespace XRL.World.Parts
 			if (E.ID == "EnterCell")
 			{
 				if(ParentObject.GetPart<Chat>() != null){
-					ParentObject.GetPart<Chat>().Says = Popup.AskString("Write on sign...","",140);
+					ParentObject.GetPart<Chat>().Says = Popup.AskString("Write on sign...","");
 				}
 			}
 			return base.FireEvent(E);

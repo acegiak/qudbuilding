@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <skills>
     <skill Name="Wayfaring">
-        <power Name="Construction" Cost="0" Attribute="Intelligence" Minimum="16" Class="qudbuilding_ConstructionSkill" Snippet="building" Description="You can assemble simple structures from piles of basic materials."></power> <!-- TODO/POWERGRIDS: add "and deploy wiring" to Description when fully deploying power grids -->
+        <power Name="Construction" Cost="0" Attribute="Intelligence" Minimum="16" Class="qudbuilding_ConstructionSkill" Snippet="building" Description="You can assemble simple structures from piles of basic materials." Tile="Abilities/buildability.png"  Foreground="w" Detail="y"></power> <!-- TODO/POWERGRIDS: add "and deploy wiring" to Description when fully deploying power grids -->
     </skill>
 </skills>

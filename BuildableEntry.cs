@@ -157,7 +157,7 @@ namespace qudbuilding
 					}
 				}
 			}
-			return GameObject.create(Result.Name, beforeObjectCreated: delegate(GameObject obj)
+			return GameObject.create(Result.Name, BeforeObjectCreated: delegate(GameObject obj)
 				{
 					obj.RemovePart<Graffitied>();
 				}

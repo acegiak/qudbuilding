@@ -4,6 +4,7 @@ using System.Linq;
 using XRL.UI;
 using qudbuilding;
 using qudbuilding.Utilities;
+using ConsoleLib.Console;
 
 namespace XRL.World.Parts.Skill
 {
@@ -74,7 +75,7 @@ namespace XRL.World.Parts.Skill
 				XRL.Messages.MessageQueue.AddPlayerMessage("You begin building " + XRL.Language.Grammar.A(toBuild.DisplayName + "."), "&y");
 				toBuild.StartAssembling(The.Player, targetCell: targetCell);
 			} else {
-				int amountToBuild = Popup.AskNumber("How many do you want to craft?", 1, 0, toBuild.MaxBuildCount(The.Player)) ?? 0;
+				int amountToBuild = Popup.AskNumber("How many do you want to craft?", null,null, 1, 0, toBuild.MaxBuildCount(The.Player)) ?? 0;
 				if (amountToBuild == 0)
 				{
 					return false;
@@ -119,8 +120,8 @@ namespace XRL.World.Parts.Skill
 		
 		public override bool AddSkill(GameObject GO)
 		{
-			BuildAbilityID = AddMyActivatedAbility("Build", "CommandQudBuild", "Skill", "You build an object from raw materials.", "-", null, Toggleable: false, DefaultToggleState: false, ActiveToggle: false, IsAttack: false);
-			RebuildAbilityID = AddMyActivatedAbility("Rebuild Last", "CommandQudBuildLast", "Skill", "Re-build what you built last.", "-", null, Toggleable: false, DefaultToggleState: false, ActiveToggle: false, IsAttack: false);
+			BuildAbilityID = AddMyActivatedAbility("Build", "CommandQudBuild", "Skill", "You build an object from raw materials.", "-", null, Toggleable: false, DefaultToggleState: false, ActiveToggle: false, IsAttack: false,UITileDefault : Renderable.UITile("Abilities/buildability.png", foregroundColorCode : 'w', detailColorCode : 'y', noTileAlt : "B", noTileColor : '\0'));
+			RebuildAbilityID = AddMyActivatedAbility("Rebuild Last", "CommandQudBuildLast", "Skill", "Re-build what you built last.", "-", null, Toggleable: false, DefaultToggleState: false, ActiveToggle: false, IsAttack: false, UITileDefault : Renderable.UITile("Abilities/rebuildability.png", foregroundColorCode : 'w', detailColorCode : 'y', noTileAlt : "R", noTileColor : '\0'));
 			return base.AddSkill(GO);
 		}
 

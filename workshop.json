@@ -1,1 +1,8 @@
-{"workshopId":1811865863,"Title":"Under Qudstruction","Description":"Adds the skill Construction. Collect raw resources like large stones, brinestalk canes, wood scraps, and bent metal sheets, and build with them.\n\nYou can find the code and report issues on this plugin at: https://github.com/acegiak/qudbuilding","Tags":"construction, tinkering, building","Visibility":"2","ImagePath":"preview.png"}
+{
+  "WorkshopId": 1811865863,
+  "Title": "Under Qudstruction",
+  "Description": "Adds the skill Construction. Collect raw resources like large stones, brinestalk canes, wood scraps, and bent metal sheets, and build with them.\n\nYou can find the code and report issues on this plugin at: https://github.com/acegiak/qudbuilding",
+  "Tags": "construction, tinkering, building",
+  "Visibility": "2",
+  "ImagePath": "preview.png"
+}
