@@ -18,11 +18,11 @@ namespace XRL.World.Parts.Skill
 			return true;
 		}
 
-		public override void Register(GameObject Object)
+		public override void Register(GameObject Object, IEventRegistrar Registrar)
 		{
 			Object.RegisterPartEvent(this, "CommandQudBuild");
 			Object.RegisterPartEvent(this, "CommandQudBuildLast");
-			base.Register(Object);
+			base.Register(Object, Registrar);
 		}
 
 		public override bool FireEvent(Event E)
@@ -110,7 +110,7 @@ namespace XRL.World.Parts.Skill
 					ChoiceList.Add("{{dark gray|" + itemTag + buildableEntry.DisplayName + "}} {{dark red|(unavailable)}}");
 				}
 			}
-			int selectedidx = Popup.ShowOptionList("Building", ChoiceList.ToArray(), HotkeyList.ToArray(), 0, "Choose what to build.", 78, RespectOptionNewlines: false, AllowEscape: true);
+			int selectedidx = Popup.PickOption("Building", "Choose what to build.", Options: ChoiceList, Hotkeys: HotkeyList, MaxWidth: 78, AllowEscape: true, RespectOptionNewlines: false);
 			if (selectedidx < 0)
 			{
 				return null;
