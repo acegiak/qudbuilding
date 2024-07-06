@@ -157,7 +157,7 @@ namespace qudbuilding
 					}
 				}
 			}
-			return GameObject.create(Result.Name, BeforeObjectCreated: delegate(GameObject obj)
+			return GameObject.Create(Result.Name, BeforeObjectCreated: delegate(GameObject obj)
 				{
 					obj.RemovePart<Graffitied>();
 				}
@@ -218,7 +218,7 @@ namespace qudbuilding
 					int remaining = entry.Value - liquidContainers.Select(item => item.LiquidVolume.Amount(entry.Key)).Sum();
 					if (remaining > 0)
 					{
-						missingNames.Add(QudBuilding_Grammar.NumericalPluralize("dram", remaining) + " of " + LiquidVolume.getLiquid(entry.Key).Name);
+						missingNames.Add(QudBuilding_Grammar.NumericalPluralize("dram", remaining) + " of " + LiquidVolume.GetLiquid(entry.Key).Name);
 					}
 				}
 			}
