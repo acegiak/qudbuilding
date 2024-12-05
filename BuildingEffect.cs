@@ -189,7 +189,7 @@ namespace XRL.World.Effects
 			{
 				if ((E.GetParameter("Damage") as Damage).Amount > 0)
 				{
-					if (!base.Object.IsPlayer() || (Popup.ShowYesNo("You're taking damage, stop building?", AllowEscape: true, DialogResult.Yes) == DialogResult.Yes))
+					if (!base.Object.IsPlayer() || (Popup.ShowYesNo("You're taking damage, stop building?") == DialogResult.Yes))
                     {
 					    Object.RemoveEffect(this);
 						return false;
