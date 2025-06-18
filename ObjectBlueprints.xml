@@ -93,7 +93,7 @@
   <object Name="Walking Stick" Load="Merge">
     <part Name="ItemDrop" PartsToDrop="Scrap Wood,35"/>
   </object>
-  <object Name="Dogthorn Tree" Load="Merge">
+  <object Name="Tree" Load="Merge">
     <part Name="ItemDrop" PartsToDrop="Scrap Wood,100,2;Scrap Wood,75;Scrap Wood,50"/>
   </object>
     
@@ -105,14 +105,14 @@
     <part Name="ItemDrop" PartsToDrop="Scrap Wood,100,3;Scrap Wood,75;Scrap Wood,50"/>
   </object>
 
-  <object Name="Crafted Wood Desk" Inherits="Wood Desk">
+  <object Name="Crafted Wood Desk" Inherits="Desk">
     <part Name="Render" DisplayName="brinestalk desk" ColorString="&amp;c" />
     <part Name="Description" Short="A simple wooden desk made of dried brinestalk." />
     <removepart Name="Inventory"/>
     <part Name="Inventory"/>
     <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
   </object>
-  <object Name="Crafted Metal Desk" Inherits="Metal Desk">
+  <object Name="Crafted Metal Desk" Inherits="Desk">
     <part Name="Render" DisplayName="scrap metal desk" ColorString="&amp;c" />
     <part Name="Description" Short="A cobbled-together metal desk, a shoddy facsimile made of rusted scrap and sweat." />
     <removepart Name="Inventory"/>
