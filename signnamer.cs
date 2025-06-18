@@ -17,10 +17,10 @@ namespace XRL.World.Parts
 			return true;
 		}
 
-		public override void Register(GameObject Object)
+		public override void Register(GameObject Object, IEventRegistrar Registrar)
 		{
 			Object.RegisterPartEvent(this, "EnterCell");
-			base.Register(Object);
+			base.Register(Object, Registrar);
 		}
 
 

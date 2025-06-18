@@ -173,7 +173,7 @@ namespace qudbuilding
 		}
 		public static List<BuildableEntry> GetBuildsWithIngredient(string ingredient)
 		{
-			BaseLiquid liquid = LiquidVolume.getLiquid(ingredient);
+			BaseLiquid liquid = LiquidVolume.GetLiquid(ingredient);
 			if(liquid != null)
 			{
 				return GetBuildsWithLiquid(liquid);

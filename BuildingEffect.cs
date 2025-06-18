@@ -94,16 +94,10 @@ namespace XRL.World.Effects
 			return base.WantEvent(ID, cascade);
 		}
 
-		public override void Register(GameObject Object)
+		public override void Register(GameObject Object, IEventRegistrar Registrar)
 		{
-			Object.RegisterEffectEvent(this, "TakeDamage");
-			base.Register(Object);
-		}
-
-		public override void Unregister(GameObject Object)
-		{
-			Object.UnregisterEffectEvent(this, "TakeDamage");
-			base.Unregister(Object);
+			Registrar.Register("TakeDamage");
+			base.Register(Object, Registrar);
 		}
 
 		public override bool Render(RenderEvent E)

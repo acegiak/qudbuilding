@@ -46,7 +46,7 @@ namespace XRL.World.Parts
 					{
 						for (int i = 0; i < amount; i++)
 						{
-							GameObject newObject = GameObject.create(item);
+							GameObject newObject = GameObject.Create(item);
 							XRL.World.Parts.Temporary.CarryOver(ParentObject, newObject);
 							XRL.World.Capabilities.Phase.carryOver(ParentObject, newObject);
 							if (InventoryObject != null)
